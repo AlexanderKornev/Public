@@ -6,3 +6,5 @@
 # а внизу виден результат выполнения этого файла.
 
 # https://photos.app.goo.gl/qBvZJJKXikjSdHySA
+
+# зачёт!
