@@ -39,4 +39,9 @@ forth_word = secret_message[3][12:6:-1]
 fifth_word = secret_message[4][20:15:-1]
 secret_message = first_word + ' ' + second_word + ' ' + third_word + ' ' + forth_word + ' ' + fifth_word
 
+# TODO, Пожалуйста, обратите внимание, все вычисления лучше делать заранее, до print().
+#  В print() для объединения текста можно использовать ",", вместо "+ ' ' +"
+#  Пробелы между переменными в тексте проставятся автоматически. Давайте проверим.
+
+
 print(secret_message)

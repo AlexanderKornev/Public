@@ -57,7 +57,7 @@ table = store[goods['Стол']]
 
 table_cost = table[0]['quantity'] * table[0]['price'] + table[1]['quantity'] * table[1]['price']
 table_quantity = table[0]['quantity'] + table[1]['quantity']
-print('Стол -', table_quantity , 'шт, стоимость', table_cost, 'руб')
+print('Стол -', table_quantity, 'шт, стоимость', table_cost, 'руб')
 
 # couch - сокращение переменной
 
@@ -70,8 +70,14 @@ print('Диван -', couch_quantity, 'шт, стоимость', couch_cost, '�
 # chair - сокращение переменной
 
 chair = store[goods['Стул']]
+# Пожалуйста, обратите внимание,
+# как можно осуществить перенос строки при длинных вычислениях
 
-chair_cost = chair[0]['quantity'] * chair[0]['price'] + chair[1]['quantity'] * chair[1]['price'] + chair[2]['quantity'] * chair[2]['price']
+chair_cost = (
+        chair[0]['quantity'] * chair[0]['price']
+        + chair[1]['quantity'] * chair[1]['price']
+        + chair[2]['quantity'] * chair[2]['price']
+)
 chair_quantity = chair[0]['quantity'] + chair[1]['quantity'] + chair[2]['quantity']
 print('Стул -', chair_quantity, 'шт, стоимость', chair_cost, 'руб')
 ##########################################################################################
@@ -81,8 +87,4 @@ print('Стул -', chair_quantity, 'шт, стоимость', chair_cost, 'р�
 # Как оформить попытку сдачи смотрите видео - https://youtu.be/qVpN0L-C3LU               #
 ##########################################################################################
 
-
-
-
-
-
+# зачёт!

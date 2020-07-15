@@ -13,8 +13,6 @@ PI = 3.1415926
 square_circle = round(PI * radius ** 2, 4)
 print(square_circle)
 
-
-
 # Далее, пусть есть координаты точки
 point_1 = (23, 34)
 # где 23 - координата х, 34 - координата у
@@ -42,4 +40,4 @@ print(radius > segment_2)
 # False
 # False
 
-
+# зачёт!
