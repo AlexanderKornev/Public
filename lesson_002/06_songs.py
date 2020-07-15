@@ -41,7 +41,7 @@ pocket_universe_songs = {
 # Распечатайте общее время звучания трех песен: 'On Track', 'To the Sea' и 'Beyond Mirrors'
 #   А другие три песни звучат приблизительно ХХХ минут
 
-# TODO здесь ваш код
-
+three_songs_length_2 = int(pocket_universe_songs['On Track'] + pocket_universe_songs['To the Sea'] + pocket_universe_songs['Beyond Mirrors'])
+print('А другие три песни звучат приблизительно', three_songs_length_2, 'минут')
 # Обратите внимание, что делать много вычислений внутри print() - плохой стиль.
 # Лучше заранее вычислить необходимое, а затем в print(xxx, yyy, zzz)
