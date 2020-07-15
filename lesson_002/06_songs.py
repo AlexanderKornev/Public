@@ -20,8 +20,8 @@ violator_songs = [
 # Точность указывается в функции round(a, b)
 # где a, это число которое надо округлить, а b количество знаков после запятой
 # более подробно про функцию round смотрите в документации https://docs.python.org/3/search.html?q=round
-
-# TODO здесь ваш код
+three_songs_length = round(violator_songs[3][1] + violator_songs [5][1] + violator_songs [8][1], 2)
+print('Три песни звучат', three_songs_length ,'минут')
 
 # Есть словарь песен группы Yellow со временем звучания с точностью до долей минут
 pocket_universe_songs = {
