@@ -11,14 +11,18 @@
 
 educational_grant, expenses = 10000, 12000
 months = range(10)
-count = 0
+count = -1
+need_in_month = expenses - educational_grant
 total_expenses = 0
 inflation = 0.03
 
-while len(months) >= count:
-    total_expenses = (expenses - educational_grant) + total_expenses
+while len(months) > count:
+    total_expenses += need_in_month
     count += 1
     if count > 1:
-        total_expenses = total_expenses * inflation + total_expenses
+        inflation += inflation
+        need_in_month *= inflation
+    else:
+        need_in_month *= inflation
     continue
 print(total_expenses)
