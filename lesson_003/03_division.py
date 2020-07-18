@@ -10,5 +10,13 @@
 #   Целочисленное деление ХХХ на YYY дает ZZZ
 
 a, b = 179, 37
+integer = 0
+multiplication_a = a
+multiplication_b = b
 
-# TODO здесь ваш код
+while multiplication_a >= multiplication_b:
+    integer += 1
+    multiplication_a -= multiplication_b
+
+
+print('Целочисленное деление', a, 'на', b, 'дает', integer)
