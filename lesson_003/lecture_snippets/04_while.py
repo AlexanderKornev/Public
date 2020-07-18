@@ -57,7 +57,9 @@ print('дотвиданя!')
 
 
 # else, break and continue - все вместе
-f1, f2, count = 0, 1, 0
+f1 = 0
+f2 = 1
+count = 0
 while f2 < 10000:
     count += 1
     if count > 27:

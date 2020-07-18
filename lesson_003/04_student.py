@@ -10,5 +10,15 @@
 #   Студенту надо попросить ХХХ.ХХ рублей
 
 educational_grant, expenses = 10000, 12000
+months = range(10)
+count = 0
+total_expenses = 0
+inflation = 0.03
 
-# TODO здесь ваш код
+while len(months) >= count:
+    total_expenses = (expenses - educational_grant) + total_expenses
+    count += 1
+    if count > 1:
+        total_expenses = total_expenses * inflation + total_expenses
+    continue
+print(total_expenses)
