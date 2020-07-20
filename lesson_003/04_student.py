@@ -10,17 +10,24 @@
 #   Студенту надо попросить ХХХ.ХХ рублей
 
 educational_grant, expenses = 10000, 12000
-months = range(10)
-count = -1
-need_in_month = expenses - educational_grant
+months = range(10)  # TODO, тут лучше просто 10 без range.
+count = -1  # TODO Эта переменная лишняя, если months будет просто 10, можно будет в цикле сокращать её.
+need_in_month = expenses - educational_grant  # Рассчитываем, сколько нужно попросить в первый месяц. Правильно!
 total_expenses = 0
 inflation = 0.03
 
+# TODO, Александр, давайте попробуем решить без условного оператора if/else.
+#  Первый месяц мы рассчитываем в need_in_month, Поэтому, в цикле while нам надо пройти всего 09 одинаковых месяцев.
 while len(months) > count:
     total_expenses += need_in_month
     count += 1
     if count > 1:
         inflation += inflation
+        # TODO, пожалуйста, обратите внимание, 0.03 + 0.03 = 0.06.
+        #  По идее, нам необходимо каждый месяц увеличивать expenses на 3 процента
+        #  и потом вычитать стипендию educational_grant.
+        #  А мы постоянно получаем 3% от суммы, которую необходимо получить за первый месяц.
+        #  Получается, за первый месяц мы просим 2000, за оставшиеся 9 месяцев 62.021472104971. Не протянет студент =)
         need_in_month *= inflation
     else:
         need_in_month *= inflation

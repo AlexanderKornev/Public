@@ -18,5 +18,5 @@ while multiplication_a >= multiplication_b:
     integer += 1
     multiplication_a -= multiplication_b
 
-
 print('Целочисленное деление', a, 'на', b, 'дает', integer)
+# зачёт!
