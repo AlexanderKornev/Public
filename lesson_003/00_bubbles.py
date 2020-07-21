@@ -27,17 +27,13 @@ bubble(point=point, step=20, color=sd.COLOR_BLACK)
 # Нарисовать 10 пузырьков в ряд
 for x in range(100, 1001, 100):
     point = sd.get_point(x, 100)
-    # TODO, Александр, пожалуйста, обратите внимание, код не запускается
-    #  TypeError: bubble() missing 1 required positional argument: 'color',
-    #  означает, что функция ждёт аргумент color, так как он не задан по умолчани.
-    bubble(point=point, step=5)
+    bubble(point=point, step=5, color=sd.COLOR_RED)
 #
 # # # Нарисовать три ряда по 10 пузырьков
 for y in range(100, 301, 100):
     for x in range(100, 1001, 100):
         point = sd.get_point(x, y)
-        # TODO, В этом месте тоже. Давайте поправим.
-        bubble(point=point, step=5)
+        bubble(point=point, step=5, color=sd.COLOR_CYAN)
 #
 # # # Нарисовать 100 пузырьков в произвольных местах экрана случайными цветами
 # for _ in range(100):
