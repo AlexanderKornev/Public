@@ -63,9 +63,7 @@ store = {
 # print(example_a)
 # print(example_b)
 
-for good in goods.items():
-    good_name = good[0]
-    good_code_name = good[1]
+for good_name, good_code_name in goods.items():
     good_store_total_quantity = 0
     good_store_total_price = 0
 
@@ -74,3 +72,5 @@ for good in goods.items():
         good_store_total_quantity += good_store['quantity']
 
     print(good_name, '-', good_store_total_quantity, 'шт, стоимость', good_store_total_price, 'руб')
+
+# Если мое решение не оптимально, пожалуйста, натолкните на мысль, как написать эффективнее.
