@@ -29,7 +29,7 @@ for _ in rainbow_colors:
 # поэкспериментировать с параметрами, что бы было красиво
 point = sd.get_point(602, -100)
 radius = 500
-for _ in rainbow_colors[::-1]:
+for _ in rainbow_colors:
     radius -= 16
     sd.circle(center_position=point, radius=radius, color=_, width=15)
 
@@ -37,6 +37,8 @@ for _ in rainbow_colors[::-1]:
 # for _ in rainbow_colors:
 #     radius += 16
 #     sd.circle(center_position=point, radius=radius, color=_, width=15)
+# # Точно, спасибо большое! Я просто не подумал, что радугу можно перевернуть цветами и за счет
+# отрисовки ее со знаком минус, т.е. сначала самый большой круг, а затем все меньше и меньше.
 
 
 sd.pause()
