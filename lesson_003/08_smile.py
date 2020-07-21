@@ -36,6 +36,7 @@ def smile(x, y, color):
     mouth_3_end = sd.get_point(x + 15, y - 10)
     sd.line(mouth_3_start, mouth_3_end, color=color, width=2)
 
+
 # По условиям задачи, x и y должны быть константами. Я не понимаю, как их рандомизировать для
 # скрипта. У них должно быть значение int(), поэтому функция sd.random_point() не работает.
 # Прошу "натолкнуть" в нужное русло.
@@ -45,10 +46,11 @@ def smile(x, y, color):
 # Когда мы вызвали функцию, мы можем обратиться к функции x и y,
 # что бы они вернули нам случайные числа из диапазона точек видимого экрана.
 # Я все правильно расписал, Владимир?
-for _ in range (10):
+for _ in range(10):
     point = sd.random_point()
     point_x, point_y = point.x, point.y
     smile(x=point_x, y=point_y, color=sd.random_color())
 # Я увеличил range до 1000, интересно получилось =)
 sd.pause()
 
+# зачёт!

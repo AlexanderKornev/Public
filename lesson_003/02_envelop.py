@@ -66,3 +66,11 @@ elif hole_x >= brick_y and hole_y >= brick_z:
     print('ДА')
 else:
     print('НЕТ')
+
+# h_x - b_x  h_y - b_y
+# h_x - b_x  h_y - b_z
+# h_x - b_y  h_y - b_z
+# TODO, не хватает половины решения, для проверки всех возможных ситуаций =) http://joxi.ru/MAjbDEXc4G85RA
+# TODO h_x - b_y  h_y - b_x
+# TODO h_x - b_z  h_y - b_x
+# TODO h_x - b_z  h_y - b_y

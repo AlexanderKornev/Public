@@ -30,11 +30,13 @@ inflation = 0
 # Я не до конца понимаю условие задачи. Получается, что в первый месяц, студенту нужно будет дополнительно только 2000?
 # Т.Е. в первый месяц инфляция не учитывается? Считать инфляция и увеличиваться
 count = 0
-while count < 9:
+while count < 9: # TODO, проходим на 1 месяц меньше чем нужно
     count += 1
     need_in_month = expenses - educational_grant
     total_expenses += need_in_month
     inflation += 0.03
+    # TODO Почему-то растёт инфляция на 3 % в связи с чем второй месяц умножается на 3%,
+    #  третий уже на 6%. должно всегда на 3%.
     expenses += inflation * expenses
     continue
 print('Студенту надо попросить', total_expenses.__round__(2), 'рублей')
