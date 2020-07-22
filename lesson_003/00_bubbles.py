@@ -36,9 +36,11 @@ for y in range(100, 301, 100):
         bubble(point=point, step=5, color=sd.COLOR_CYAN)
 #
 # # # Нарисовать 100 пузырьков в произвольных местах экрана случайными цветами
-# for _ in range(100):
-#     point = sd.random_point()
-#     color = sd.random_color()
-#     bubble(point=point, step=6, color=color)
+for _ in range(100):
+    point = sd.random_point()
+    color = sd.random_color()
+    bubble(point=point, step=6, color=color)
 
 sd.pause()
+
+# зачёт!

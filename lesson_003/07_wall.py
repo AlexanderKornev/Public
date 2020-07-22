@@ -12,17 +12,19 @@ color = sd.COLOR_RED
 
 
 for range_number, y in enumerate(range(0, 600, 50)):
-    if range_number % 2 == 0:
-        y = y
-        range_x = 0
-    else:
-        y = y
-        range_x = -50
+    # if range_number % 2 == 0:
+    #     y = y
+    #     range_x = 0
+    # else:
+    #     y = y
+    #     range_x = -50
+    # Можно сразу так
+    range_x = 0 if range_number % 2 == 0 else -50
+
     for x in range(range_x, 1200, 100):  # Идёт от -50 до 1200 не включительно с шагом 100
         left_bottom = sd.get_point(x, y)
         right_top = sd.get_point(x + 100, y + 50)
         sd.rectangle(left_bottom=left_bottom, right_top=right_top, color=sd.COLOR_RED, width=1)
-
 
 # Я не понимаю, как нужно сделать сдвиг.
 # В чате пишут, что нужно добавить if, которое проверяло бы шаг на четность и в зависимости
@@ -46,8 +48,6 @@ for range_number, y in enumerate(range(0, 600, 50)):
 # sd.rectangle(left_bottom=left_bottom, right_top=right_top, color=sd.COLOR_CYAN, width=1)
 
 
-
-
 # Подсказки:
 #  Для отрисовки кирпича использовать функцию rectangle
 #  Алгоритм должен получиться приблизительно такой:
@@ -59,3 +59,4 @@ for range_number, y in enumerate(range(0, 600, 50)):
 #           рисуем кирпич
 
 sd.pause()
+# зачёт!
