@@ -14,7 +14,6 @@ need_in_month = 0
 total_expenses = 0
 inflation = 0.03
 
-
 # while months > month_number:
 #     total_expenses += need_in_month
 #     month_number += 1
@@ -34,7 +33,8 @@ while count < 10:
     count += 1
     need_in_month = expenses - educational_grant
     total_expenses += need_in_month
-    # TODO да я задание понял, что каждый месяц инфляция увеличивается. Если она статична, тогда проще даже режается.=)
     expenses += inflation * expenses
     continue
 print('Студенту надо попросить', total_expenses.__round__(2), 'рублей')
+# да я задание понял, что каждый месяц инфляция увеличивается. Если она статична, тогда проще даже режается.=)
+# зачёт!
