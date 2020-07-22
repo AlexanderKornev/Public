@@ -10,28 +10,19 @@ color = sd.COLOR_RED
 # Нарисовать стену из кирпичей. Размер кирпича - 100х50
 # Использовать вложенные циклы for
 
-x = 0
-y = 0
-for range_number, y in enumerate(range(0, 600, 50)):
-    if range_number % 2 == 0:
-        y = y
-    else:
-        y1 = y + 50
-    for x in range(-50, 1200, 100):
-        x = x
-        if range_number % 2 == 0:
-            left_bottom = sd.get_point(x, y)
-            right_top = sd.get_point(x + 100, y + 50)
-            sd.rectangle(left_bottom=left_bottom, right_top=right_top, color=sd.COLOR_RED, width=1)
-        else:
-            x += 50
-            left_bottom1 = sd.get_point(x, y)
-            right_top2 = sd.get_point(x + 100, y1)
-            sd.rectangle(left_bottom=left_bottom1, right_top=right_top2, color=sd.COLOR_RED, width=1)
 
-        # left_bottom1 = sd.get_point(x2, y)
-        # right_top2 = sd.get_point(x2 + 100, y + 50)
-        # sd.rectangle(left_bottom=left_bottom, right_top=right_top, color=sd.COLOR_RED, width=1)
+for range_number, y in enumerate(range(0, 600, 50)):
+    for x in range(0, 1200, 100):  # Идёт от -50 до 1200 не включительно с шагом 100
+        if range_number % 2 == 0:
+            y = y
+            x = x
+        else:
+            y = y
+            x = x - 50
+        left_bottom = sd.get_point(x, y)
+        right_top = sd.get_point(x + 100, y + 50)
+        sd.rectangle(left_bottom=left_bottom, right_top=right_top, color=sd.COLOR_RED, width=1)
+
 
 # Я не понимаю, как нужно сделать сдвиг.
 # В чате пишут, что нужно добавить if, которое проверяло бы шаг на четность и в зависимости
