@@ -58,6 +58,14 @@ brick_x, brick_y, brick_z = 11, 10, 2
 # brick_x, brick_y, brick_z = 3, 11, 6
 # (просто раскоментировать нужную строку и проверить свой код)
 
+# Эта часть реализована.
+# h_x - b_x  h_y - b_y
+# h_x - b_x  h_y - b_z
+# h_x - b_y  h_y - b_z
+# TODO, не хватает половины решения, для проверки всех возможных ситуаций =) http://joxi.ru/MAjbDEXc4G85RA
+# TODO h_x - b_y  h_y - b_x
+# TODO h_x - b_z  h_y - b_x
+# TODO h_x - b_z  h_y - b_y
 if hole_x >= brick_x and hole_y >= brick_y:
     print('ДА')
 elif hole_x >= brick_x and hole_y >= brick_z:
