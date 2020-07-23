@@ -2,6 +2,7 @@
 
 import simple_draw as sd
 
+
 # Часть 1.
 # Написать функции рисования равносторонних геометрических фигур:
 # - треугольника
@@ -36,7 +37,7 @@ import simple_draw as sd
 # sd.line()
 # Результат решения см lesson_004/results/exercise_01_shapes.jpg
 
-point = sd.get_point(100, 100)
+
 def triangle(point, lenght, angle=0):
     v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
     v1.draw()
@@ -47,9 +48,7 @@ def triangle(point, lenght, angle=0):
     v3 = sd.get_vector(start_point=v2.end_point, angle=angle + 240, length=lenght, width=3)
     v3.draw()
 
-print(triangle(point, 100, 50))
 
-point_square = sd.get_point(250, 250)
 def square(point, lenght, angle=0):
     v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
     v1.draw()
@@ -66,9 +65,7 @@ def square(point, lenght, angle=0):
     l5 = sd.line(start_point=v3.end_point, end_point=point, width=3)
     print(l5)
 
-square(point_square, 100, 40)
 
-point_pentagon = sd.get_point(400, 250)
 def pentagon(point, lenght, angle=0):
     v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
     v1.draw()
@@ -88,11 +85,8 @@ def pentagon(point, lenght, angle=0):
     l5 = sd.line(start_point=v4.end_point, end_point=point, width=3)
     print(l5)
 
-pentagon(point_pentagon, 100, 0)
 
-
-point_hexagon = sd.get_point(400, 400)
-def hexagon(point, lenght, angle=0) :
+def hexagon(point, lenght, angle=0):
     v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
     v1.draw()
 
@@ -115,12 +109,28 @@ def hexagon(point, lenght, angle=0) :
     print(l6)
 
 
+# TODO, отлично! Александр, пожалуйста, приступайте ко 2ой части задания.
+#  1. Нейминг: обратите внимание. Слово lenght, не так пишется =) Мне, если честно так тоже больше нравится,
+#  но PyCharm подсказывает, что такого слова нет =)
+#  2. Помните, сначала создаём все функции, и только потом пишем код с их вызовом. Сейчас перенёс сам.
+point = sd.get_point(100, 100)
+print(triangle(point, 100, 50))  # print наверное лишний =)
+
+point_square = sd.get_point(250, 250)
+square(point_square, 100, 40)
+
+point_pentagon = sd.get_point(400, 250)
+pentagon(point_pentagon, 100, 0)
+
+point_hexagon = sd.get_point(400, 400)
 hexagon(point_hexagon, 100, 0)
 
 # Часть 1-бис.
 # Попробуйте прикинуть обьем работы, если нужно будет внести изменения в этот код.
 # Скажем, связывать точки не линиями, а дугами. Или двойными линиями. Или рисовать круги в угловых точках. Или...
 # А если таких функций не 4, а 44? Код писать не нужно, просто представь объем работы... и запомни это.
+
+# зачёт первой части. Пожалуйста, приступайте ко второй!
 
 # Часть 2 (делается после зачета первой части)
 #
