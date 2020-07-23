@@ -38,25 +38,25 @@ import simple_draw as sd
 # Результат решения см lesson_004/results/exercise_01_shapes.jpg
 
 
-def triangle(point, lenght, angle=0):
-    v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
+def triangle(point, length, angle=0):
+    v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
     v1.draw()
 
-    v2 = sd.get_vector(start_point=v1.end_point, angle=angle + 120, length=lenght, width=3)
+    v2 = sd.get_vector(start_point=v1.end_point, angle=angle + 120, length=length, width=3)
     v2.draw()
 
-    v3 = sd.get_vector(start_point=v2.end_point, angle=angle + 240, length=lenght, width=3)
+    v3 = sd.get_vector(start_point=v2.end_point, angle=angle + 240, length=length, width=3)
     v3.draw()
 
 
-def square(point, lenght, angle=0):
-    v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
+def square(point, length, angle=0):
+    v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
     v1.draw()
 
-    v2 = sd.get_vector(start_point=v1.end_point, angle=angle + 90, length=lenght, width=3)
+    v2 = sd.get_vector(start_point=v1.end_point, angle=angle + 90, length=length, width=3)
     v2.draw()
 
-    v3 = sd.get_vector(start_point=v2.end_point, angle=angle - 180, length=lenght, width=3)
+    v3 = sd.get_vector(start_point=v2.end_point, angle=angle - 180, length=length, width=3)
     v3.draw()
 
     # v4 = sd.get_vector(start_point=v3.end_point, angle=angle - 90, length=lenght, width=3)
@@ -66,17 +66,17 @@ def square(point, lenght, angle=0):
     print(l5)
 
 
-def pentagon(point, lenght, angle=0):
-    v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
+def pentagon(point, length, angle=0):
+    v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
     v1.draw()
 
-    v2 = sd.get_vector(start_point=v1.end_point, angle=angle - 72, length=lenght, width=3)
+    v2 = sd.get_vector(start_point=v1.end_point, angle=angle - 72, length=length, width=3)
     v2.draw()
 
-    v3 = sd.get_vector(start_point=v2.end_point, angle=angle - 144, length=lenght, width=3)
+    v3 = sd.get_vector(start_point=v2.end_point, angle=angle - 144, length=length, width=3)
     v3.draw()
 
-    v4 = sd.get_vector(start_point=v3.end_point, angle=angle + 144, length=lenght, width=3)
+    v4 = sd.get_vector(start_point=v3.end_point, angle=angle + 144, length=length, width=3)
     v4.draw()
 
     # v5 = sd.get_vector(start_point=v4.end_point, angle=angle + 72, length=lenght + 4, width=3)
@@ -86,20 +86,20 @@ def pentagon(point, lenght, angle=0):
     print(l5)
 
 
-def hexagon(point, lenght, angle=0):
-    v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
+def hexagon(point, length, angle=0):
+    v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
     v1.draw()
 
-    v2 = sd.get_vector(start_point=v1.end_point, angle=angle + 60, length=lenght, width=3)
+    v2 = sd.get_vector(start_point=v1.end_point, angle=angle + 60, length=length, width=3)
     v2.draw()
 
-    v3 = sd.get_vector(start_point=v2.end_point, angle=angle + 120, length=lenght, width=3)
+    v3 = sd.get_vector(start_point=v2.end_point, angle=angle + 120, length=length, width=3)
     v3.draw()
 
-    v4 = sd.get_vector(start_point=v3.end_point, angle=angle + 180, length=lenght, width=3)
+    v4 = sd.get_vector(start_point=v3.end_point, angle=angle + 180, length=length, width=3)
     v4.draw()
 
-    v5 = sd.get_vector(start_point=v4.end_point, angle=angle + 240, length=lenght + 4, width=3)
+    v5 = sd.get_vector(start_point=v4.end_point, angle=angle + 240, length=length + 4, width=3)
     v5.draw()
 
     # v6 = sd.get_vector(start_point=v5.end_point, angle=angle - 60, length=lenght + 4, width=3)
@@ -114,7 +114,7 @@ def hexagon(point, lenght, angle=0):
 #  но PyCharm подсказывает, что такого слова нет =)
 #  2. Помните, сначала создаём все функции, и только потом пишем код с их вызовом. Сейчас перенёс сам.
 point = sd.get_point(100, 100)
-print(triangle(point, 100, 50))  # print наверное лишний =)
+triangle(point, 100, 50)  # print наверное лишний =)
 
 point_square = sd.get_point(250, 250)
 square(point_square, 100, 40)
