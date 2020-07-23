@@ -28,7 +28,7 @@ import simple_draw as sd
 #   - копипастим её, меняем название, чуть подправляем код,
 #   - копипастим её, меняем название, чуть подправляем код,
 #   - и так далее.
-# В итоге должен получиться ПОЧТИ одинаковый код в каждой функции
+# # В итоге должен получиться ПОЧТИ одинаковый код в каждой функции
 
 # Пригодятся функции
 # sd.get_point()
@@ -36,7 +36,86 @@ import simple_draw as sd
 # sd.line()
 # Результат решения см lesson_004/results/exercise_01_shapes.jpg
 
-# TODO здесь ваш код
+point = sd.get_point(100, 100)
+def triangle(point, lenght, angle=0):
+    v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
+    v1.draw()
+
+    v2 = sd.get_vector(start_point=v1.end_point, angle=angle + 120, length=lenght, width=3)
+    v2.draw()
+
+    v3 = sd.get_vector(start_point=v2.end_point, angle=angle + 240, length=lenght, width=3)
+    v3.draw()
+
+print(triangle(point, 100, 50))
+
+point_square = sd.get_point(250, 250)
+def square(point, lenght, angle=0):
+    v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
+    v1.draw()
+
+    v2 = sd.get_vector(start_point=v1.end_point, angle=angle + 90, length=lenght, width=3)
+    v2.draw()
+
+    v3 = sd.get_vector(start_point=v2.end_point, angle=angle - 180, length=lenght, width=3)
+    v3.draw()
+
+    # v4 = sd.get_vector(start_point=v3.end_point, angle=angle - 90, length=lenght, width=3)
+    # v4.draw()
+
+    l5 = sd.line(start_point=v3.end_point, end_point=point, width=3)
+    print(l5)
+
+square(point_square, 100, 40)
+
+point_pentagon = sd.get_point(400, 250)
+def pentagon(point, lenght, angle=0):
+    v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
+    v1.draw()
+
+    v2 = sd.get_vector(start_point=v1.end_point, angle=angle - 72, length=lenght, width=3)
+    v2.draw()
+
+    v3 = sd.get_vector(start_point=v2.end_point, angle=angle - 144, length=lenght, width=3)
+    v3.draw()
+
+    v4 = sd.get_vector(start_point=v3.end_point, angle=angle + 144, length=lenght, width=3)
+    v4.draw()
+
+    # v5 = sd.get_vector(start_point=v4.end_point, angle=angle + 72, length=lenght + 4, width=3)
+    # v5.draw()
+
+    l5 = sd.line(start_point=v4.end_point, end_point=point, width=3)
+    print(l5)
+
+pentagon(point_pentagon, 100, 0)
+
+
+point_hexagon = sd.get_point(400, 400)
+def hexagon(point, lenght, angle=0) :
+    v1 = sd.get_vector(start_point=point, angle=angle, length=lenght, width=3)
+    v1.draw()
+
+    v2 = sd.get_vector(start_point=v1.end_point, angle=angle + 60, length=lenght, width=3)
+    v2.draw()
+
+    v3 = sd.get_vector(start_point=v2.end_point, angle=angle + 120, length=lenght, width=3)
+    v3.draw()
+
+    v4 = sd.get_vector(start_point=v3.end_point, angle=angle + 180, length=lenght, width=3)
+    v4.draw()
+
+    v5 = sd.get_vector(start_point=v4.end_point, angle=angle + 240, length=lenght + 4, width=3)
+    v5.draw()
+
+    # v6 = sd.get_vector(start_point=v5.end_point, angle=angle - 60, length=lenght + 4, width=3)
+    # v6.draw()
+
+    l6 = sd.line(start_point=v5.end_point, end_point=point, width=3)
+    print(l6)
+
+
+hexagon(point_hexagon, 100, 0)
 
 # Часть 1-бис.
 # Попробуйте прикинуть обьем работы, если нужно будет внести изменения в этот код.
