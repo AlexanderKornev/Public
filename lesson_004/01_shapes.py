@@ -149,35 +149,30 @@ import simple_draw as sd
 # (если он есть. подсказка - на последней итерации можно использовать линию от первой точки)
 
 
-def vector_lines(point, angle, length, figure):
-    if angle > 241:
-        line = sd.line(start_point=next_point, end_point=point, width=3)
-        print(line)
-        return
-    v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
-    v1.draw()
-    next_point = v1.end_point
-    if figure == 1:
-        next_angle = angle + 120
-        vector_lines(point=next_point, angle=next_angle, length=length, figure=figure)
-    if figure == 2:
-        next_angle = angle + 90
-        vector_lines(point=next_point, angle=next_angle, length=length, figure=figure)
-    if figure == 3:
-        next_angle = angle + 72
-        vector_lines(point=next_point, angle=next_angle, length=length, figure=figure)
-    if figure == 4:
-        next_angle = angle + 60
-        vector_lines(point=next_point, angle=next_angle, length=length, figure=figure)
+def vector(point, length, angle=0, lines=0):
+    begin_point = point
+    for _ in range(lines):
+        v = sd.get_vector(start_point=point, angle=angle + 360 / (lines + 1), length=length, width=3)
+        v.draw()
+        point = v.end_point
+        angle = v.angle
+    print(v.end_point)
+    l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=3) # Вот эта лини криво рисуется.
+    print(l3)
+
+    # print(angle)
+    # x = sd.get_point(500, 300)
+    # l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=3)
+    # print(l3)
+
+def triangle(point, length, angle=0):
+    vector(point=point, angle=angle + 120, length=length, lines=2)
 
 
+point = sd.get_point(200, 200)
+triangle(point=point, length=100, angle=0)
 
-
-def triangle(point, length, angle):
-    vector_lines(point=point, angle=angle, length=length, figure=4)
-
-point = sd.get_point(200, 100)
-triangle(point=point, angle=0, length=100)
+sd.pause()
 
 # Часть 2-бис.
 # А теперь - сколько надо работы что бы внести изменения в код? Выгода на лицо :)
