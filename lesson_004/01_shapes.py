@@ -2,6 +2,7 @@
 
 import simple_draw as sd
 
+
 # Часть 1.
 # Написать функции рисования равносторонних геометрических фигур:
 # - треугольника
@@ -147,23 +148,34 @@ import simple_draw as sd
 #
 # Не забудте в этой общей функции придумать, как устранить разрыв в начальной/конечной точках рисуемой фигуры
 # (если он есть. подсказка - на последней итерации можно использовать линию от первой точки)
-
+# TODO, Нейминг: функцию vector лучше переименовать более подходящим названием, к примеру "рисуем_векторы"
+#  Параметр lines по идее, указывает, сколько линий (сторон) содержит фигуры. Лучше указывать для треугольника 3,
+#  а потом в цикле рисовать на 1 меньше. Так легче не запутаться с параметрами.
 
 def vector(point, length, angle=0, lines=0):
     begin_point = point
+    # TODO, Возможно стоит перенести вычисления angle в переменную angle, которую Вы создаёте в цикле,
+    #  так будет меньше вычислений в функции. + Лучше begin_point передавать в start_point, меняя его в каждом цикле.
+    #  А уже потом point использовать в start_point у функции line. Таким образом параметр основной
+    #  функции останется неизменённым.
     for _ in range(lines):
         v = sd.get_vector(start_point=point, angle=angle + 360 / (lines + 1), length=length, width=3)
         v.draw()
         point = v.end_point
         angle = v.angle
+        print(type(angle))
     print(v.end_point)
-    l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=3) # Вот эта лини криво рисуется.
+    l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=3)  # Вот эта лини криво рисуется.
+    # Это не ошибка, это проблема вектора самой библиотеки. Как вариант, можно попробовать идти в
+    # цикле с шагом от 0 до 360. Таким образом, переменная angle будет создаваться внутри цикла и
+    # не будет необходимости проводить с ней вычисления.
     print(l3)
 
     # print(angle)
     # x = sd.get_point(500, 300)
     # l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=3)
     # print(l3)
+
 
 def triangle(point, length, angle=0):
     vector(point=point, angle=angle + 120, length=length, lines=2)
