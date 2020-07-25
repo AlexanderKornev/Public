@@ -151,14 +151,25 @@ import simple_draw as sd
 
 def vector(point, length, angle=0, lines=0):
     begin_point = point
+    next_angle = 360 // lines
+    shape_count = 0
+    shape_for_line = lines - 1
     for _ in range(lines):
-        v = sd.get_vector(start_point=point, angle=angle + 360 / (lines + 1), length=length, width=3)
-        v.draw()
-        point = v.end_point
-        angle = v.angle
+        if shape_count < shape_for_line:
+            v = sd.get_vector(start_point=point, angle=angle, length=length, width=1)
+            v.draw()
+            print('END POINT', v.end_point)
+            print('Angle', v.angle)
+            point = v.end_point
+            angle = v.angle + next_angle
+            shape_count = shape_count + 1
+        else:
+            # point_x = sd.get_point(100, 200)
+            l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=1)
+            # print('L3 END POINT', l3.end_point) # Вот эта лини криво рисуется.
+            print(l3)
     print(v.end_point)
-    l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=3) # Вот эта лини криво рисуется.
-    print(l3)
+
 
     # print(angle)
     # x = sd.get_point(500, 300)
@@ -166,7 +177,7 @@ def vector(point, length, angle=0, lines=0):
     # print(l3)
 
 def triangle(point, length, angle=0):
-    vector(point=point, angle=angle + 120, length=length, lines=2)
+    vector(point=point, angle=angle, length=length, lines=5)
 
 
 point = sd.get_point(200, 200)
