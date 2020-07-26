@@ -110,11 +110,6 @@ import simple_draw as sd
 #     print(l6)
 
 
-# TODO, отлично! Александр, пожалуйста, приступайте ко 2ой части задания.
-#  1. Нейминг: обратите внимание. Слово lenght, не так пишется =) Мне, если честно так тоже больше нравится,
-#  но PyCharm подсказывает, что такого слова нет =)
-#  2. Помните, сначала создаём все функции, и только потом пишем код с их вызовом. Сейчас перенёс сам.
-# point = sd.get_point(200, 100)
 
 
 # triangle(point, 100, 50)  # print наверное лишний =)
@@ -158,30 +153,38 @@ def vector(point, length, angle=0, lines=0):
         if shape_count < shape_for_line:
             v = sd.get_vector(start_point=point, angle=angle, length=length, width=1)
             v.draw()
-            print('END POINT', v.end_point)
-            print('Angle', v.angle)
             point = v.end_point
             angle = v.angle + next_angle
             shape_count = shape_count + 1
         else:
-            # point_x = sd.get_point(100, 200)
             l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=1)
-            # print('L3 END POINT', l3.end_point) # Вот эта лини криво рисуется.
             print(l3)
-    print(v.end_point)
 
 
-    # print(angle)
-    # x = sd.get_point(500, 300)
-    # l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=3)
-    # print(l3)
+def triangle(point, length, angle):
+    vector(point=point, angle=angle, length=length, lines=3)
 
-def triangle(point, length, angle=0):
+def square(point, length, angle):
+    vector(point=point, angle=angle, length=length, lines=4)
+
+def pentagon(point, length, angle):
     vector(point=point, angle=angle, length=length, lines=5)
 
+def hexagon(point, length, angle):
+    vector(point=point, angle=angle, length=length, lines=6)
 
-point = sd.get_point(200, 200)
-triangle(point=point, length=100, angle=0)
+
+triangle_point = sd.get_point(100, 100)
+triangle(point=triangle_point, length=100, angle=0)
+
+point_square = sd.get_point(400, 100)
+square(point=point_square, length=100, angle=0)
+
+point_pentagon = sd.get_point(100, 400)
+pentagon(point=point_pentagon, length=100, angle=0)
+
+point_hexagon = sd.get_point(400, 400)
+hexagon(point=point_hexagon, length=100, angle=0)
 
 sd.pause()
 
