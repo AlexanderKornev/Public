@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import simple_draw as sd
+sd.resolution = (1600, 800)
 
 # 1) Написать функцию draw_branches, которая должна рисовать две ветви дерева из начальной точки
 # Функция должна принимать параметры:
@@ -9,6 +10,22 @@ import simple_draw as sd
 # - длина ветвей,
 # Отклонение ветвей от угла рисования принять 30 градусов,
 
+
+# def draw_branches(point, angel, length):
+#     v1 = sd.get_vector(start_point=point, angle=angel, length=length, width=3)
+#     v1.draw()
+#     next_point = v1.end_point
+#
+#     v2 = sd.get_vector(start_point=next_point, angle=angel + 30, length=length * .75, width=3)
+#     v2.draw()
+#
+#     v2 = sd.get_vector(start_point=next_point, angle=angel - 30, length=length * .75, width=3)
+#     v2.draw()
+
+
+
+# point_branches = sd.get_point(300, 0)
+# draw_branches(point=point_branches, angel=90, length=50)
 # 2) Сделать draw_branches рекурсивной
 # - добавить проверку на длину ветвей, если длина меньше 10 - не рисовать
 # - вызывать саму себя 2 раза из точек-концов нарисованных ветвей,
@@ -26,12 +43,53 @@ import simple_draw as sd
 
 # можно поиграть -шрифтами- цветами и углами отклонения
 
-# TODO здесь ваш код
+# def draw_branches(point, angel, length):
+#     v1 = sd.get_vector(start_point=point, angle=angel, length=length, width=1)
+#     v1.draw()
+#     next_point = v1.end_point
+#     angel_left = angel + 30
+#     v2 = sd.get_vector(start_point=next_point, angle=angel_left, length=length, width=1)
+#     v2.draw()
+#     angel_right = angel - 30
+#     v3 = sd.get_vector(start_point=next_point, angle=angel_right, length=length, width=1)
+#     v3.draw()
+#     if length < 10:
+#         return
+#     length_left = v2.length * 0.75
+#     draw_branches(point=v2.end_point, angel=v2.angle, length=length_left)
+#     length_right = v3.length * 0.75
+#     draw_branches(point=v3.end_point, angel=v3.angle, length=length_right)
+#
+#
+# root_point = sd.get_point(600, 30)
+# draw_branches(point=root_point, angel=90, length=100)
 
 # 4) Усложненное задание (делать по желанию)
 # - сделать рандомное отклонение угла ветвей в пределах 40% от 30-ти градусов
 # - сделать рандомное отклонение длины ветвей в пределах 20% от коэффициента 0.75
 # Возможный результат решения см lesson_004/results/exercise_04_fractal_02.jpg
+
+def draw_branches(point, angel, length):
+    v1 = sd.get_vector(start_point=point, angle=angel, length=length, width=1)
+    v1.draw()
+    next_point = v1.end_point
+    angel_left = angel + sd.random_number(a=12, b=42)
+    v2 = sd.get_vector(start_point=next_point, angle=angel_left, length=length, width=1)
+    v2.draw()
+    angel_right = angel - sd.random_number(a=12, b=42)
+    v3 = sd.get_vector(start_point=next_point, angle=angel_right, length=length, width=1)
+    v3.draw()
+    if length < 10:
+        return
+    length_left = v2.length * (sd.random_number(a=60, b=90) / 100)
+    draw_branches(point=v2.end_point, angel=v2.angle, length=length_left)
+    length_right = v3.length * (sd.random_number(a=60, b=90) / 100)
+    draw_branches(point=v3.end_point, angel=v3.angle, length=length_right)
+
+
+root_point = sd.get_point(600, 30)
+draw_branches(point=root_point, angel=90, length=100)
+
 
 # Пригодятся функции
 # sd.random_number()
