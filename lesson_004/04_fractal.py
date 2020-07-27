@@ -42,53 +42,57 @@ sd.resolution = (1600, 800)
 # Возможный результат решения см lesson_004/results/exercise_04_fractal_01.jpg
 
 # можно поиграть -шрифтами- цветами и углами отклонения
+# TODO, Александра, смотрите, задача такая. Рисуем 1 вектор снизу-вверх. Больше функция ничего не рисует.
+#  Из его окончания берём начало для отрисовки двух других векторов.
+#  Меняем длину и углы наклона векторов. - ГОТОВО
+#  Вызываем функцию дважды с новыми параметрами - ГОТОВО
 
-# def draw_branches(point, angel, length):
-#     v1 = sd.get_vector(start_point=point, angle=angel, length=length, width=1)
-#     v1.draw()
-#     next_point = v1.end_point
-#     angel_left = angel + 30
-#     v2 = sd.get_vector(start_point=next_point, angle=angel_left, length=length, width=1)
-#     v2.draw()
-#     angel_right = angel - 30
-#     v3 = sd.get_vector(start_point=next_point, angle=angel_right, length=length, width=1)
-#     v3.draw()
-#     if length < 10:
-#         return
-#     length_left = v2.length * 0.75
-#     draw_branches(point=v2.end_point, angel=v2.angle, length=length_left)
-#     length_right = v3.length * 0.75
-#     draw_branches(point=v3.end_point, angel=v3.angle, length=length_right)
-#
-#
-# root_point = sd.get_point(600, 30)
-# draw_branches(point=root_point, angel=90, length=100)
+def draw_branches(point, angel, length):
+    v1 = sd.get_vector(start_point=point, angle=angel, length=length, width=1)
+    v1.draw()
+    next_point = v1.end_point
+    angel_left = angel + 30
+    v2 = sd.get_vector(start_point=next_point, angle=angel_left, length=length, width=1)
+    v2.draw()
+    angel_right = angel - 30
+    v3 = sd.get_vector(start_point=next_point, angle=angel_right, length=length, width=1)
+    v3.draw()
+    if length < 10:  # TODO, условие выхода из фрактала лучше указывать в самую первую очередь.
+        return
+    length_left = v2.length * 0.75
+    draw_branches(point=v2.end_point, angel=v2.angle, length=length_left)
+    length_right = v3.length * 0.75
+    draw_branches(point=v3.end_point, angel=v3.angle, length=length_right)
+
+
+root_point = sd.get_point(600, 30)
+draw_branches(point=root_point, angel=90, length=100)
 
 # 4) Усложненное задание (делать по желанию)
 # - сделать рандомное отклонение угла ветвей в пределах 40% от 30-ти градусов
 # - сделать рандомное отклонение длины ветвей в пределах 20% от коэффициента 0.75
 # Возможный результат решения см lesson_004/results/exercise_04_fractal_02.jpg
 
-def draw_branches(point, angel, length):
-    v1 = sd.get_vector(start_point=point, angle=angel, length=length, width=1)
-    v1.draw()
-    next_point = v1.end_point
-    angel_left = angel + sd.random_number(a=12, b=42)
-    v2 = sd.get_vector(start_point=next_point, angle=angel_left, length=length, width=1)
-    v2.draw()
-    angel_right = angel - sd.random_number(a=12, b=42)
-    v3 = sd.get_vector(start_point=next_point, angle=angel_right, length=length, width=1)
-    v3.draw()
-    if length < 10:
-        return
-    length_left = v2.length * (sd.random_number(a=60, b=90) / 100)
-    draw_branches(point=v2.end_point, angel=v2.angle, length=length_left)
-    length_right = v3.length * (sd.random_number(a=60, b=90) / 100)
-    draw_branches(point=v3.end_point, angel=v3.angle, length=length_right)
-
-
-root_point = sd.get_point(600, 30)
-draw_branches(point=root_point, angel=90, length=100)
+# def draw_branches(point, angel, length):
+#     v1 = sd.get_vector(start_point=point, angle=angel, length=length, width=1)
+#     v1.draw()
+#     next_point = v1.end_point
+#     angel_left = angel + sd.random_number(a=12, b=42)
+#     v2 = sd.get_vector(start_point=next_point, angle=angel_left, length=length, width=1)
+#     v2.draw()
+#     angel_right = angel - sd.random_number(a=12, b=42)
+#     v3 = sd.get_vector(start_point=next_point, angle=angel_right, length=length, width=1)
+#     v3.draw()
+#     if length < 10:
+#         return
+#     length_left = v2.length * (sd.random_number(a=60, b=90) / 100)
+#     draw_branches(point=v2.end_point, angel=v2.angle, length=length_left)
+#     length_right = v3.length * (sd.random_number(a=60, b=90) / 100)
+#     draw_branches(point=v3.end_point, angel=v3.angle, length=length_right)
+#
+#
+# root_point = sd.get_point(600, 30)
+# draw_branches(point=root_point, angel=90, length=100)
 
 
 # Пригодятся функции

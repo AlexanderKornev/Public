@@ -149,6 +149,8 @@ def vector(point, length, angle=0, lines=0):
     next_angle = 360 // lines
     shape_count = 0
     shape_for_line = lines - 1
+    # TODO, Александр, суть Вы правильно уловили! Gредлагаю упростить вариант отрисовки, убрав if/else.
+    #  давайте в цикле рисовать на 1 вектор меньше и после цикла всегда рисовать 1 линию.
     for _ in range(lines):
         if shape_count < shape_for_line:
             v = sd.get_vector(start_point=point, angle=angle, length=length, width=1)
@@ -157,10 +159,11 @@ def vector(point, length, angle=0, lines=0):
             angle = v.angle + next_angle
             shape_count = shape_count + 1
         else:
+            # TODO, line как переменную создавать не нужно =) она всегда рисуется сразу.
             l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=1)
             print(l3)
 
-
+# TODO, Александр, всё верно, но параметр angle всегда равен "0", давайте лучше добавим параметр color =)
 def triangle(point, length, angle):
     vector(point=point, angle=angle, length=length, lines=3)
 

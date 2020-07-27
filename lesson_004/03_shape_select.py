@@ -38,7 +38,8 @@ def pentagon(point, length, angle):
 def hexagon(point, length, angle):
     vector(point=point, angle=angle, length=length, lines=6)
 
-
+# TODO Пожалуйста, произведите перенос текста, как я сделал это в 02.
+#  В этом месте тоже, лучше использовать в виде ключей ожидаемую от пользователя цифру в строковом формате.
 figure_dic = {'треугольник': 3,
              'квадрат': 4,
              'пятиугольник': 5,
@@ -54,6 +55,8 @@ while True :
         for figure_number, lines in enumerate(figure_dic):
             if figure_number == user_figure:
                 lines = figure_dic[lines]
+                # TODO, тоже лучше вынести за пределы цикла отрисовку фигуры и оставить
+                #  только создание переменной фигурой.
                 center = sd.get_point(200, 200)
                 vector(point=center, length=100, angle=0, lines=lines, color=sd.COLOR_RED)
         break
