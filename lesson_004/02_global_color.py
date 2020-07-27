@@ -25,13 +25,11 @@ def vector(point, length, angle=0, lines=0, color=sd.COLOR_RED) :
             v = sd.get_vector(start_point=point, angle=angle, length=length, width=1)
             v.draw()
             line_v = sd.line(start_point=v.start_point, end_point=v.end_point, width=1, color=color)
-            print(line_v)
             point = v.end_point
             angle = v.angle + next_angle
             shape_count = shape_count + 1
         else :
             l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=1, color=color)
-            print(l3)
 
 
 def triangle(point, length, angle, color):
@@ -58,23 +56,33 @@ color_dic = {'red': sd.COLOR_RED,
              }
 
 while True :
-    user_color = input('Возможные цвета: ')
-    for color in color_dic:
-        if color == user_color:
-            color = color_dic[color]
-            triangle_point = sd.get_point(100, 100)
-            triangle(point=triangle_point, length=100, angle=0, color=color)
-            point_square = sd.get_point(400, 100)
-            square(point=point_square, length=100, angle=0, color=color)
-            point_pentagon = sd.get_point(100, 400)
-            pentagon(point=point_pentagon, length=100, angle=0, color=color)
-            point_hexagon = sd.get_point(400, 400)
-            hexagosn(point=point_hexagon, length=100, angle=0, color=color)
-            print(color)
-        else:
-            print('Вы ввели неккоретный номер!')
-    if user_color in color_dic:
+    print('Возможные цвета: ')
+    for number, color_print in enumerate(color_dic):
+        print(number, ':', color_print)
+    user_color = int(input('Введите желаемый цвет: '))
+    if 0 < user_color < 6:
+        for color_number, color_color in enumerate(color_dic):
+            if color_number == user_color:
+                color = color_dic[color_color]
+                triangle_point = sd.get_point(100, 100)
+                triangle(point=triangle_point, length=100, angle=0, color=color)
+                point_square = sd.get_point(400, 100)
+                square(point=point_square, length=100, angle=0, color=color)
+                point_pentagon = sd.get_point(100, 400)
+                pentagon(point=point_pentagon, length=100, angle=0, color=color)
+                point_hexagon = sd.get_point(400, 400)
+                hexagon(point=point_hexagon, length=100, angle=0, color=color)
         break
+    elif 6 > user_color < 0:
+        print('Вы ввели некорректный номер!')
+
+
+
+
+
+
+
+
 
 # triangle_point = sd.get_point(100, 100)
 # triangle(point=triangle_point, length=100, angle=0)
