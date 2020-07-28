@@ -144,50 +144,42 @@ import simple_draw as sd
 # (если он есть. подсказка - на последней итерации можно использовать линию от первой точки)
 
 
-def vector(point, length, angle=0, lines=0):
+def vector(point, length, color=sd.COLOR_YELLOW, angle=0, lines=0):
     begin_point = point
     next_angle = 360 // lines
-    shape_count = 0
-    shape_for_line = lines - 1
-    # TODO, Александр, суть Вы правильно уловили! Gредлагаю упростить вариант отрисовки, убрав if/else.
-    #  давайте в цикле рисовать на 1 вектор меньше и после цикла всегда рисовать 1 линию.
-    for _ in range(lines):
-        if shape_count < shape_for_line:
-            v = sd.get_vector(start_point=point, angle=angle, length=length, width=1)
-            v.draw()
-            point = v.end_point
-            angle = v.angle + next_angle
-            shape_count = shape_count + 1
-        else:
-            # TODO, line как переменную создавать не нужно =) она всегда рисуется сразу.
-            l3 = sd.line(start_point=v.end_point, end_point=begin_point, width=1)
-            print(l3)
+    for _ in range(lines-1):
+        v = sd.get_vector(start_point=point, angle=angle, length=length, width=4)
+        v.draw()
+        sd.line(start_point=v.start_point, end_point=v.end_point, color=sd.random_color(), width=4)
+        point = v.end_point
+        angle = v.angle + next_angle
+    sd.line(start_point=v.end_point, end_point=begin_point, width=4, color=sd.random_color())
 
-# TODO, Александр, всё верно, но параметр angle всегда равен "0", давайте лучше добавим параметр color =)
-def triangle(point, length, angle):
-    vector(point=point, angle=angle, length=length, lines=3)
 
-def square(point, length, angle):
-    vector(point=point, angle=angle, length=length, lines=4)
+def triangle(point, length, color):
+    vector(point=point, color=color, length=length, lines=3)
 
-def pentagon(point, length, angle):
-    vector(point=point, angle=angle, length=length, lines=5)
+def square(point, length, color):
+    vector(point=point, color=color, length=length, lines=4)
 
-def hexagon(point, length, angle):
-    vector(point=point, angle=angle, length=length, lines=6)
+def pentagon(point, length, color):
+    vector(point=point, color=color, length=length, lines=5)
+
+def hexagon(point, length, color):
+    vector(point=point, color=color, length=length, lines=6)
 
 
 triangle_point = sd.get_point(100, 100)
-triangle(point=triangle_point, length=100, angle=0)
+triangle(point=triangle_point, length=100, color=sd.random_color())
 
 point_square = sd.get_point(400, 100)
-square(point=point_square, length=100, angle=0)
+square(point=point_square, length=100, color=sd.random_color())
 
 point_pentagon = sd.get_point(100, 400)
-pentagon(point=point_pentagon, length=100, angle=0)
+pentagon(point=point_pentagon, length=100, color=sd.random_color())
 
 point_hexagon = sd.get_point(400, 400)
-hexagon(point=point_hexagon, length=100, angle=0)
+hexagon(point=point_hexagon, length=100, color=sd.random_color())
 
 sd.pause()
 
@@ -197,4 +189,3 @@ sd.pause()
 # Будьте ленивыми, не используйте копи-пасту!
 
 
-sd.pause()
