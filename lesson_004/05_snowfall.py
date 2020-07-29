@@ -34,20 +34,18 @@ for number_x in range(quantity_snowflakes) :
 while True:
         sd.clear_screen()
         for index, sf_name in enumerate(snowflake_dict):
-           x = snowflake_dict[sf_name][0]
+            x = snowflake_dict[sf_name][0]
             y = snowflake_dict[sf_name][1]
             length = snowflake_dict[sf_name][2]
             point = sd.get_point(x, y)
             print(point)
             sd.snowflake(center=point, length=length)
-
             snowflake_dict[sf_name][0] = snowflake_dict[sf_name][0] + sd.random_number(-5, 10)
             snowflake_dict[sf_name][1] = snowflake_dict[sf_name][1] - sd.random_number(5, 20)
             if snowflake_dict[sf_name][1] < 12:
                 # Не знаю, на сколько элегантно, но работает. :)
                 snowflake_dict[sf_name][0] = snowflake_dict[sf_name][0] - 100
                 snowflake_dict[sf_name][1] = snowflake_dict[sf_name][1] + 800
-
         sd.sleep(0.1)
         if sd.user_want_exit():
             break
