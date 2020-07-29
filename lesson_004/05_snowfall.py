@@ -9,8 +9,7 @@ sd.resolution = (1200, 800)
 # - создать список рандомных длин лучей снежинок (от 10 до 100) и пусть все снежинки будут разные
 
 N = 20
-x_list = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000]
-y_list = [500, 550, 450, 400, 550, 600, 550, 450, 400, 550, 550, 450, 400, 550, 550, 450, 400, 550, 400, 550]
+
 
 # Пригодятся функции
 # sd.get_point()
@@ -19,40 +18,37 @@ y_list = [500, 550, 450, 400, 550, 600, 550, 450, 400, 550, 550, 450, 400, 550, 
 # sd.random_number()
 # sd.user_want_exit()
 
-# TODO, Александр, в принципе всё верно. Давайте немного улучшим код.
-#  Создадим функцию для отрисовки 1 снежинки.
-#  Создадим для хранения снежинок словарь. В словаре ключом будет снежинка,
-#  а значение другой словарь или список с параметрами снежинки (x, y, длина лучей).
-#  Точку можно задавать и хранить одним объектом с помощью функции get_point передавая рандомные x и y, при создании.
-#  Словарь заполним нашей функцией в цикле исходя из кол-ва снежино. Если было бы снежинок 100,
-#  то списки с нашими координатами было бы не удобно хранить и пополнять.
-#  Ко всему, снежинки постоянно меняют размер, становясь то больше, то меньше =)
-#  В природе, вроде всегда только меньше из-за таяния. Давайте длину лучей менять не будем.
+
+
+
+quantity_snowflakes = 100
+first_position = {}
+for number_x in range(quantity_snowflakes) :
+    x = sd.random_number(100, 800)
+    y = sd.random_number(700, 800)
+    length = sd.random_number(5, 12)
+    first_position.setdefault('snowflake' + str(number_x), [x, y, length])
+
 
 
 while True:
     sd.clear_screen()
-    for index, point_x in enumerate(x_list):
-        point_y = y_list[index]
-        point = sd.get_point(point_x, point_y)
-        length = sd.random_number(a=10, b=20)
+    for index, sf_name in enumerate(first_position):
+        if y < 50:
+            break
+        x = first_position[sf_name][0]
+        y = first_position[sf_name][1]
+        length = first_position[sf_name][2]
+        point = sd.get_point(x, y)
         sd.snowflake(center=point, length=length)
-        del x_list[index]
-        # TODO Пока идём по списку, добавлять и удалять элементы списка не желательно.
-        #  Может привести к непредсказуемым последствиям (багам).
-        #  Лучше после создать хранилище с ключами (если мы воспользуемся словарём для хранения) упавших снежинок.
-        #  Если не пустое, то удалять из словаря снежинок снежинку по идексу, но уже вне основного цикла for.
-        point_x += sd.random_number(a=1, b=15)
-        x_list.insert(index, point_x)
-        del y_list[index]
-        point_y -= sd.random_number(a=1, b=20)
-        y_list.insert(index, point_y)
-
+        first_position[sf_name][0] = first_position[sf_name][0] + 5
+        first_position[sf_name][1] = first_position[sf_name][1] - 5
     sd.sleep(0.1)
-    if point_y < 10: # TODO, этот break останавливает весь снегопад. По идее, при таком условии мы до
+    if sd.user_want_exit() :
         break
-    if sd.user_want_exit():
-        break
+
+
+
 sd.pause()
 
 # Примерный алгоритм отрисовки снежинок
