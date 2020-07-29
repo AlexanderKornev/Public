@@ -54,6 +54,8 @@ color_dic = {
     '6': ['purple', sd.COLOR_PURPLE],
 }
 
+# TODO, Александр, хорошо, только давайте в цикле оставим создание переменной с цветом, а отрисовку сделаем вне цикла.
+#  И будет зачёт! =)
 
 while True:
     for number_color, number_name_color in color_dic.items():
