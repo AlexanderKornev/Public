@@ -143,33 +143,13 @@ import simple_draw as sd
 # (если он есть. подсказка - на последней итерации можно использовать линию от первой точки)
 
 def vector(point, length, color=sd.COLOR_YELLOW, lines=0):
-    #  Просто если убрать sd.line внутри цикла
-    # не будет разных цветов, и параметр color не нужен т.к. sd.get_vector не имеет значения color.
-    # TODO, 1. если рисовать следом line, получается двойная работа. =)
-    #  2. sd.get_vector не имеет параметра color. Но при отрисовке созданного вектора v.draw(),
-    #  можно указать параметр color =)
-
-
-    # А вы в предыдущем ТУДУ предложили поиграть с цветами.
     begin_point = point
     next_angle = 360 // lines
-    # А ещё, тут сделать range от 0, до 360 не включительно с шагом next_angle.
-    # И next_angle использовать как угол для отрисовки. Для треугольника он будет 0, 120, 240.
-    #   таком лучае, вычисления angle = v.angle + next_angle будут лишними.
-    for angle in range(0, 360, next_angle):
-        # TODO, если треугольник, то надо отрисовать 2 стороны с помощью вектора.
-        #  Сейчас рисуем 3 стороны т.к. angle => 0, 120, 240. next_angle = 120
-        #  нам надо отрисовать 2 стороны т.е. angle толжен быть => 0, 120. На сколько надо сократить 360 в range?
-        x = next_angle * (lines - 1)  # лишний код
-        if x == angle: # лишний код
-            break  # лишний код
-        #  добавил range по angle. К сожалению, в таком случае не удается "затормозить" цикл на предпоследней
-        #  линии. Он рисует ВСЕ векторы=линиям, а последнюю с неправильным углом.
-        #  Поэтому добавил условие по разрыву цикала.
-        # TODO, чуть Выше указал, как можно поступить, чтобы не писать лишний код =)
+    for angle in range(0, 240, next_angle):
+        # все рисуется, кроме шестиугольника. Ему нужно 5 сторон, но 60 * 5 = 300, что больше range 240, который
+        # подходит всем остальным фигурам. Задавать отдельно фигуру для этого числа в range?
         v = sd.get_vector(start_point=point, angle=angle, length=length, width=2)
-        v.draw()
-        # sd.line(start_point=v.start_point, end_point=v.end_point, color=color, width=5)
+        v.draw(color=color)
         point = v.end_point
     sd.line(start_point=v.end_point, end_point=begin_point, width=2, color=sd.COLOR_GREEN)
 
