@@ -27,13 +27,19 @@ for number_x in range(quantity_snowflakes) :
     x = sd.random_number(100, 800)
     y = sd.random_number(700, 800)
     length = sd.random_number(5, 12)
-    first_position.setdefault('snowflake' + str(number_x), [x, y, length])
+    first_position[number_x] = [x, y, length]  # TODO Пожалуйста, обратите внимание, как упрощён код
+    # TODO Ключи словаря можно создавать без приписки 'snowflake'.
+    #  словарь first_position лучше переименовать на подобии "словарь снежинок", так, чтобы отражал суть содержимого.
+    #first_position.setdefault('snowflake' + str(number_x), [x, y, length])
 
 
 
 while True:
     sd.clear_screen()
     for index, sf_name in enumerate(first_position):
+        # TODO, Александр, если снежинка ушла вниз за пределы экрана, лучше менять координаты на верх экрана.
+        #  В таком случае, она будет беспонечно падать, потом появляться снова сверху. Плучится снегопад.
+        #  break лучше убратб, иначе, при срабатывании все снежинки вдруг пропадают
         if y < 50:
             break
         x = first_position[sf_name][0]
@@ -41,6 +47,9 @@ while True:
         length = first_position[sf_name][2]
         point = sd.get_point(x, y)
         sd.snowflake(center=point, length=length)
+        # TODO, Александр, x и y координаты предлагаю менять на рандомные числа.
+        #  Таким образом, чтобы снежинки падали вниз с разной скоростью. И влево/вправо так, чтобы не уходили
+        #  за левую и правую рамки нашей зоны рисования
         first_position[sf_name][0] = first_position[sf_name][0] + 5
         first_position[sf_name][1] = first_position[sf_name][1] - 5
     sd.sleep(0.1)

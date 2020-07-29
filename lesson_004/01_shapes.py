@@ -2,6 +2,7 @@
 
 import simple_draw as sd
 
+
 # Часть 1.
 # Написать функции рисования равносторонних геометрических фигур:
 # - треугольника
@@ -110,8 +111,6 @@ import simple_draw as sd
 #     print(l6)
 
 
-
-
 # triangle(point, 100, 50)  # print наверное лишний =)
 #
 # point_square = sd.get_point(250, 250)
@@ -143,14 +142,20 @@ import simple_draw as sd
 # Не забудте в этой общей функции придумать, как устранить разрыв в начальной/конечной точках рисуемой фигуры
 # (если он есть. подсказка - на последней итерации можно использовать линию от первой точки)
 
-
+# TODO, Александр, правильно делаете, что используете "color" как параметр по умолчанию,
+#  но давайте передадим его дальше в функции отрисовки векторов и линий.
 def vector(point, length, color=sd.COLOR_YELLOW, angle=0, lines=0):
     begin_point = point
     next_angle = 360 // lines
-    for _ in range(lines-1):
+    # А ещё, тут сделать range от 0, до 360 не включительно с шагом next_angle.
+    # И next_angle использовать как угол для отрисовки. Для треугольника он будет 0, 120, 240.
+    #   таком лучае, вычисления angle = v.angle + next_angle будут лишними.
+    for _ in range(lines - 1):
         v = sd.get_vector(start_point=point, angle=angle, length=length, width=4)
         v.draw()
         sd.line(start_point=v.start_point, end_point=v.end_point, color=sd.random_color(), width=4)
+        # TODO, Александр, пожалуйста, обратите внимание лишнее действие sd.line. Фигуру рисуем изначально векторами.
+        #  Если убрать, то всё равно рисуем. Видимо прорисовывает повторно, дублируя вектор.
         point = v.end_point
         angle = v.angle + next_angle
     sd.line(start_point=v.end_point, end_point=begin_point, width=4, color=sd.random_color())
@@ -159,11 +164,14 @@ def vector(point, length, color=sd.COLOR_YELLOW, angle=0, lines=0):
 def triangle(point, length, color):
     vector(point=point, color=color, length=length, lines=3)
 
+
 def square(point, length, color):
     vector(point=point, color=color, length=length, lines=4)
 
+
 def pentagon(point, length, color):
     vector(point=point, color=color, length=length, lines=5)
+
 
 def hexagon(point, length, color):
     vector(point=point, color=color, length=length, lines=6)
@@ -187,5 +195,3 @@ sd.pause()
 # А теперь - сколько надо работы что бы внести изменения в код? Выгода на лицо :)
 # Поэтому среди программистов есть принцип D.R.Y. https://clck.ru/GEsA9
 # Будьте ленивыми, не используйте копи-пасту!
-
-
