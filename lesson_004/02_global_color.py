@@ -65,9 +65,7 @@ while True:
     #  Проверять > 6, тоже необходимость отпадёт. Если такой ключ в словаре есть, создаём переменную с цветом
     #  и выходим из цикла.
     #  Фигуры отрисуем уже вне цикла. В остально код рабочий! Молодец!
-    if int(user_color) > 6:
-        print('Вы ввели некорректный номер!')
-    else:
+    if user_color in color_dic:
         color = color_dic[user_color][1]
         triangle_point = sd.get_point(100, 100)
         triangle(point=triangle_point, length=100, angle=0, color=color)
@@ -78,6 +76,8 @@ while True:
         point_hexagon = sd.get_point(400, 400)
         hexagon(point=point_hexagon, length=100, angle=0, color=color)
         break
+    else:
+        print('Вы ввели некорректный номер!')
     # elif 6 > user_color < 0:
     #     print('Вы ввели некорректный номер!')
 
