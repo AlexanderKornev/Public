@@ -142,23 +142,26 @@ import simple_draw as sd
 # Не забудте в этой общей функции придумать, как устранить разрыв в начальной/конечной точках рисуемой фигуры
 # (если он есть. подсказка - на последней итерации можно использовать линию от первой точки)
 
-# TODO, Александр, правильно делаете, что используете "color" как параметр по умолчанию,
-#  но давайте передадим его дальше в функции отрисовки векторов и линий.
-def vector(point, length, color=sd.COLOR_YELLOW, angle=0, lines=0):
+def vector(point, length, color=sd.COLOR_YELLOW, lines=0): # TODO Просто если убрать sd.line внутри цикла
+    # не будет разных цветов, и параметр color не нужен т.к. sd.get_vector не имеет значения color.
+    # А вы в предыдущем ТУДУ предложили поиграть с цветами.
     begin_point = point
     next_angle = 360 // lines
     # А ещё, тут сделать range от 0, до 360 не включительно с шагом next_angle.
     # И next_angle использовать как угол для отрисовки. Для треугольника он будет 0, 120, 240.
     #   таком лучае, вычисления angle = v.angle + next_angle будут лишними.
-    for _ in range(lines - 1):
-        v = sd.get_vector(start_point=point, angle=angle, length=length, width=4)
+    for angle in range(0, 360, next_angle):
+        x = next_angle * (lines - 1)
+        if x == angle:
+            break
+        # TODO добавил range по angle. К сожалению, в таком случае не удается "затормозить" цикл на предпоследней
+        #  линии. Он рисует ВСЕ векторы=линиям, а последнюю с неправильным углом.
+        #  Поэтому добавил условие по разрыву цикала.
+        v = sd.get_vector(start_point=point, angle=angle, length=length, width=2)
         v.draw()
-        sd.line(start_point=v.start_point, end_point=v.end_point, color=sd.random_color(), width=4)
-        # TODO, Александр, пожалуйста, обратите внимание лишнее действие sd.line. Фигуру рисуем изначально векторами.
-        #  Если убрать, то всё равно рисуем. Видимо прорисовывает повторно, дублируя вектор.
+        # sd.line(start_point=v.start_point, end_point=v.end_point, color=color, width=5)
         point = v.end_point
-        angle = v.angle + next_angle
-    sd.line(start_point=v.end_point, end_point=begin_point, width=4, color=sd.random_color())
+    sd.line(start_point=v.end_point, end_point=begin_point, width=2, color=sd.COLOR_GREEN)
 
 
 def triangle(point, length, color):
