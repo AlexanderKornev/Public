@@ -49,7 +49,6 @@ figure_dic = {
     '3': ['шестиугольник', hexagon]
 }
 
-
 while True:
     print('Фигуры: ')
     for number, figure_print in figure_dic.items():
@@ -65,5 +64,6 @@ while True:
 point = sd.get_point(300, 300)
 figure(point=point, length=100, angle=0)
 
-
 sd.pause()
+
+# зачёт!
