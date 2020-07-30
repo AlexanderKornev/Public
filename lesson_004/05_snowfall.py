@@ -34,8 +34,8 @@ while True:
         length = value[2]
         point = sd.get_point(x, y)
         sd.snowflake(center=point, length=length, color=sd.background_color)
-        value[0] = value[0] + sd.random_number(-5, 5)  # TODO, давайте попробуем сократить код по средствам +=
-        value[1] = value[1] - sd.random_number(5, 20)  # TODO, давайте попробуем сократить код по средствам -=
+        value[0] += sd.random_number(-5, 5)
+        value[1] -= sd.random_number(5, 20)
         point2 = sd.get_point(value[0], value[1])
         sd.snowflake(center=point2, length=length)
         if value[1] < 12:
