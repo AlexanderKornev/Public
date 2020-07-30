@@ -54,8 +54,7 @@ color_dic = {
     '6': ['purple', sd.COLOR_PURPLE],
 }
 
-# TODO, Александр, хорошо, только давайте в цикле оставим создание переменной с цветом, а отрисовку сделаем вне цикла.
-#  И будет зачёт! =)
+
 
 while True:
     for number_color, number_name_color in color_dic.items():
@@ -65,16 +64,17 @@ while True:
     if user_color in color_dic:
         color = color_dic[user_color][1]
         triangle_point = sd.get_point(100, 100)
-        triangle(point=triangle_point, length=100, angle=0, color=color)
         point_square = sd.get_point(400, 100)
-        square(point=point_square, length=100, angle=0, color=color)
         point_pentagon = sd.get_point(100, 400)
-        pentagon(point=point_pentagon, length=100, angle=0, color=color)
         point_hexagon = sd.get_point(400, 400)
-        hexagon(point=point_hexagon, length=100, angle=0, color=color)
-        break
     else:
         print('Вы ввели некорректный номер!')
+    triangle(point=triangle_point, length=100, angle=0, color=color)
+    square(point=point_square, length=100, angle=0, color=color)
+    pentagon(point=point_pentagon, length=100, angle=0, color=color)
+    hexagon(point=point_hexagon, length=100, angle=0, color=color)
+    break
+
     # elif 6 > user_color < 0:
     #     print('Вы ввели некорректный номер!')
 
