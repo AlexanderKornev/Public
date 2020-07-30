@@ -58,12 +58,11 @@ while True:
     user_figure = input('Введите желаемую фигуру: ')
     if user_figure in figure_dic:
         figure = figure_dic[user_figure][1]
-        point = sd.get_point(300, 300)  # TODO, эту переменную тоже вниз перенесите пожалуйста =)
         break
     else:
         print('Вы ввели некорректный номер!')
 
-
+point = sd.get_point(300, 300)
 figure(point=point, length=100, angle=0)
 
 
