@@ -60,10 +60,9 @@ while True:
     if user_figure in figure_dic:
         figure = figure_dic[user_figure][1]
         point = sd.get_point(300, 300)
-        figure(point, 100, 0)
-        break
     else:
         print('Вы ввели некорректный номер!')
-
+    figure(point, 100, 0)
+    break
 
 sd.pause()
