@@ -42,6 +42,7 @@ def hexagon(point, length, angle):
     vector(point=point, angle=angle, length=length, lines=6)
 
 
+
 figure_dic = {
     '0': ['треугольник', triangle],
     '1': ['квадрат', square],
@@ -49,8 +50,7 @@ figure_dic = {
     '3': ['шестиугольник', hexagon]
 }
 
-# TODO, Александр, хорошо, только давайте в цикле оставим создание переменной с функцией, а отрисовку сделаем вне цикла.
-#  И будет зачёт! =)
+
 while True:
     print('Фигуры: ')
     for number, figure_print in figure_dic.items():
@@ -60,12 +60,12 @@ while True:
     if user_figure in figure_dic:
         figure = figure_dic[user_figure][1]
         point = sd.get_point(300, 300)
+        break
     else:
         print('Вы ввели некорректный номер!')
-    figure(point, 100, 0)
-    break
-    # TODO break сейчас срабатывает в любом случае, как сделать так, чтобы только в случае if,
-    #  когда цвет определён?
-# TODO, Александр, сделайте пожалуйста перенос кода из цикла while, как я сделал и 02 задании.
+
+
+figure(point=point, length=100, angle=0)
+
 
 sd.pause()
