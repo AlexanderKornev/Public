@@ -27,8 +27,6 @@ for number_x in range(quantity_snowflakes) :
 
 while True:
         sd.start_drawing()
-        # TODO, Классно получилось. Только, по словарю лучше идти в цикле с помощью items().
-        #  Переделайте пожалуйста и уберите лишний print  будет зачёт =)
         for sf_name, value in snowflake_dict.items():
             x = value[0]
             y = value[1]
