@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import simple_draw as sd
+
 sd.resolution = (1200, 1000)
 
 # На основе кода из практической части реализовать снегопад:
@@ -19,37 +20,33 @@ N = 20
 
 quantity_snowflakes = 30
 snowflake_dict = {}
-for number_x in range(quantity_snowflakes) :
+for number_x in range(quantity_snowflakes):
     x = sd.random_number(100, 1100)
     y = sd.random_number(700, 800)
     length = sd.random_number(5, 30)
     snowflake_dict[number_x] = [x, y, length]
 
 while True:
-        sd.start_drawing()
-        for sf_name, value in snowflake_dict.items():
-            x = value[0]
-            y = value[1]
-            length = value[2]
-            point = sd.get_point(x, y)
-            sd.snowflake(center=point, length=length, color=sd.background_color)
-            value[0] = value[0] + sd.random_number(-5, 5)
-            value[1] = value[1] - sd.random_number(5, 20)
-            point2 = sd.get_point(value[0], value[1])
-            sd.snowflake(center=point2, length=length)
-            if value[1] < 12:
-                value[0] = sd.random_number(100, 1100)
-                value[1] = value[1] + 800
-        sd.finish_drawing()
-        sd.sleep(0.1)
-        if sd.user_want_exit():
-            break
-
-
+    sd.start_drawing()
+    for sf_name, value in snowflake_dict.items():
+        x = value[0]
+        y = value[1]
+        length = value[2]
+        point = sd.get_point(x, y)
+        sd.snowflake(center=point, length=length, color=sd.background_color)
+        value[0] = value[0] + sd.random_number(-5, 5)  # TODO, давайте попробуем сократить код по средствам +=
+        value[1] = value[1] - sd.random_number(5, 20)  # TODO, давайте попробуем сократить код по средствам -=
+        point2 = sd.get_point(value[0], value[1])
+        sd.snowflake(center=point2, length=length)
+        if value[1] < 12:
+            value[0] = sd.random_number(100, 1100)
+            value[1] = value[1] + 800
+    sd.finish_drawing()
+    sd.sleep(0.1)
+    if sd.user_want_exit():
+        break
 
 sd.pause()
-
-
 
 # Примерный алгоритм отрисовки снежинок
 #   навсегда

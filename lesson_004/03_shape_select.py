@@ -42,7 +42,6 @@ def hexagon(point, length, angle):
     vector(point=point, angle=angle, length=length, lines=6)
 
 
-
 figure_dic = {
     '0': ['треугольник', triangle],
     '1': ['квадрат', square],
@@ -59,7 +58,7 @@ while True:
     user_figure = input('Введите желаемую фигуру: ')
     if user_figure in figure_dic:
         figure = figure_dic[user_figure][1]
-        point = sd.get_point(300, 300)
+        point = sd.get_point(300, 300)  # TODO, эту переменную тоже вниз перенесите пожалуйста =)
         break
     else:
         print('Вы ввели некорректный номер!')
