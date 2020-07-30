@@ -24,7 +24,7 @@ N = 20
 quantity_snowflakes = 50
 snowflake_dict = {}
 for number_x in range(quantity_snowflakes) :
-    x = sd.random_number(100, 800)
+    x = sd.random_number(100, 1100)
     y = sd.random_number(700, 800)
     length = sd.random_number(5, 12)
     snowflake_dict[number_x] = [x, y, length]
@@ -40,7 +40,7 @@ while True:
             point = sd.get_point(x, y)
             print(point)
             sd.snowflake(center=point, length=length)
-            snowflake_dict[sf_name][0] = snowflake_dict[sf_name][0] + sd.random_number(-5, 10)
+            snowflake_dict[sf_name][0] = snowflake_dict[sf_name][0] + sd.random_number(-5, 5)
             # TODO, предлагаю сделать рандом от (-5, 5) в координате x, чтобы сильно вправо не уходили
             snowflake_dict[sf_name][1] = snowflake_dict[sf_name][1] - sd.random_number(5, 20)
             if snowflake_dict[sf_name][1] < 12:
@@ -49,7 +49,7 @@ while True:
                 # TODO Прадлагаю не вычитать 100 давайте не вычитать 100, а задавать новое значение из диапазона
                 #  от 0 до 100 к примеру. У меня сдвинулись через 5 минут снежинки и нет больше снегопада =)
                 #  Пусть тучка на месте стоит.
-                snowflake_dict[sf_name][0] = snowflake_dict[sf_name][0] - 100
+                snowflake_dict[sf_name][0] = sd.random_number(100, 1100)
                 snowflake_dict[sf_name][1] = snowflake_dict[sf_name][1] + 800
         sd.sleep(0.1)
         if sd.user_want_exit():
