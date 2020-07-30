@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import simple_draw as sd
-sd.resolution = (1200, 800)
+sd.resolution = (1200, 1000)
 
 # На основе кода из практической части реализовать снегопад:
 # - создать списки данных для отрисовки N снежинок
@@ -21,45 +21,52 @@ N = 20
 
 
 
-quantity_snowflakes = 50
+quantity_snowflakes = 100
 snowflake_dict = {}
 for number_x in range(quantity_snowflakes) :
     x = sd.random_number(100, 1100)
     y = sd.random_number(700, 800)
     length = sd.random_number(5, 12)
     snowflake_dict[number_x] = [x, y, length]
+    print(snowflake_dict)
     #first_position.setdefault('snowflake' + str(number_x), [x, y, length])
 
 
 while True:
-        sd.clear_screen()
+        sd.start_drawing()
         for index, sf_name in enumerate(snowflake_dict):
             x = snowflake_dict[sf_name][0]
             y = snowflake_dict[sf_name][1]
             length = snowflake_dict[sf_name][2]
             point = sd.get_point(x, y)
-            print(point)
-            sd.snowflake(center=point, length=length)
+            sd.snowflake(center=point, length=length, color=sd.background_color)
             snowflake_dict[sf_name][0] = snowflake_dict[sf_name][0] + sd.random_number(-5, 5)
-            # TODO, предлагаю сделать рандом от (-5, 5) в координате x, чтобы сильно вправо не уходили
             snowflake_dict[sf_name][1] = snowflake_dict[sf_name][1] - sd.random_number(5, 20)
+            point2 = sd.get_point(snowflake_dict[sf_name][0], snowflake_dict[sf_name][1])
+            sd.snowflake(center=point2, length=length)
             if snowflake_dict[sf_name][1] < 12:
-                # Не знаю, на сколько элегантно, но работает. :)
-                #  Сейчас хорошо получилось =)
-                # TODO Прадлагаю не вычитать 100 давайте не вычитать 100, а задавать новое значение из диапазона
-                #  от 0 до 100 к примеру. У меня сдвинулись через 5 минут снежинки и нет больше снегопада =)
-                #  Пусть тучка на месте стоит.
                 snowflake_dict[sf_name][0] = sd.random_number(100, 1100)
                 snowflake_dict[sf_name][1] = snowflake_dict[sf_name][1] + 800
+        sd.finish_drawing()
         sd.sleep(0.1)
+
+        # for index, sf_name in enumerate(secound_dic):
+        #     x = secound_dic[sf_name][0]
+        #     y = secound_dic[sf_name][1]
+        #     length = secound_dic[sf_name][2]
+        #     point = sd.get_point(x, y)
+        #     sd.snowflake(center=point, length=length, color=sd.background_color)
+        # sd.sleep(0.1)
+        # # sd.finish_drawing()
         if sd.user_want_exit():
+            print(snowflake_dict)
             break
 
 
 
 sd.pause()
 
-# TODO, после исправлений, пожалуйста, приступайте ко второй части задания. И может сразу организуем сугроб? =)
+
 
 # Примерный алгоритм отрисовки снежинок
 #   навсегда
