@@ -148,6 +148,10 @@ def vector(point, length, color=sd.COLOR_YELLOW, lines=0):
     for angle in range(0, 240, next_angle):
         # все рисуется, кроме шестиугольника. Ему нужно 5 сторон, но 60 * 5 = 300, что больше range 240, который
         # подходит всем остальным фигурам. Задавать отдельно фигуру для этого числа в range?
+        # next_angle для треугольника = 120, квадрат = 90 и т.д.
+        # В случае с треугольником идём до 240, с квадратом до 270.
+        #  240 получили так 360 - 120. 270 получаем так 360 - 90
+        #  На что надо поменять 240 в цикле for angle in range(0, 240, next_angle)? =)
         v = sd.get_vector(start_point=point, angle=angle, length=length, width=2)
         v.draw(color=color)
         point = v.end_point

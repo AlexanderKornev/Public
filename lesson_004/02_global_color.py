@@ -18,7 +18,7 @@ import simple_draw as sd
 def vector(point, length, angle=0, lines=0, color=sd.COLOR_RED):
     begin_point = point
     next_angle = 360 // lines
-    for _ in range(lines-1):
+    for _ in range(lines - 1):
         v = sd.get_vector(start_point=point, angle=angle, length=length, width=1)
         v.draw()
         sd.line(start_point=v.start_point, end_point=v.end_point, width=1, color=color)
@@ -54,8 +54,6 @@ color_dic = {
     '6': ['purple', sd.COLOR_PURPLE],
 }
 
-
-
 while True:
     for number_color, number_name_color in color_dic.items():
         color_name = number_name_color[0]
@@ -63,20 +61,27 @@ while True:
     user_color = input('Введите желаемый цвет: ')
     if user_color in color_dic:
         color = color_dic[user_color][1]
-        triangle_point = sd.get_point(100, 100)
-        point_square = sd.get_point(400, 100)
-        point_pentagon = sd.get_point(100, 400)
-        point_hexagon = sd.get_point(400, 400)
     else:
         print('Вы ввели некорректный номер!')
-    triangle(point=triangle_point, length=100, angle=0, color=color)
-    square(point=point_square, length=100, angle=0, color=color)
-    pentagon(point=point_pentagon, length=100, angle=0, color=color)
-    hexagon(point=point_hexagon, length=100, angle=0, color=color)
     break
+    # TODO break сейчас срабатывает в любом случае, как сделать так, чтобы только в случае if,
+    #  когда цвет определён?
+# Объясните, пожалуйста, почему вызов функции рисования лучше делать вне цикла?
+# лучше так. Цикл нам нужен только для выбора цвета.
+# Так получается не таким награмождённым и лучше видно, где и что происходит.
 
-    # elif 6 > user_color < 0:
-    #     print('Вы ввели некорректный номер!')
+triangle_point = sd.get_point(100, 100)
+point_square = sd.get_point(400, 100)
+point_pentagon = sd.get_point(100, 400)
+point_hexagon = sd.get_point(400, 400)
+
+triangle(point=triangle_point, length=100, angle=0, color=color)
+square(point=point_square, length=100, angle=0, color=color)
+pentagon(point=point_pentagon, length=100, angle=0, color=color)
+hexagon(point=point_hexagon, length=100, angle=0, color=color)
+
+# elif 6 > user_color < 0:
+#     print('Вы ввели некорректный номер!')
 
 # triangle_point = sd.get_point(100, 100)
 # triangle(point=triangle_point, length=100, angle=0)
