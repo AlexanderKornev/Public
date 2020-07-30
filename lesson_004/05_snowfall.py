@@ -10,7 +10,6 @@ sd.resolution = (1200, 1000)
 
 N = 20
 
-
 # Пригодятся функции
 # sd.get_point()
 # sd.snowflake()
@@ -18,50 +17,34 @@ N = 20
 # sd.random_number()
 # sd.user_want_exit()
 
-
-
-
-quantity_snowflakes = 100
+quantity_snowflakes = 30
 snowflake_dict = {}
 for number_x in range(quantity_snowflakes) :
     x = sd.random_number(100, 1100)
     y = sd.random_number(700, 800)
-    length = sd.random_number(5, 12)
+    length = sd.random_number(5, 30)
     snowflake_dict[number_x] = [x, y, length]
-    print(snowflake_dict)
-    #first_position.setdefault('snowflake' + str(number_x), [x, y, length])
-
 
 while True:
         sd.start_drawing()
         # TODO, Классно получилось. Только, по словарю лучше идти в цикле с помощью items().
         #  Переделайте пожалуйста и уберите лишний print  будет зачёт =)
-        for index, sf_name in enumerate(snowflake_dict):
-            x = snowflake_dict[sf_name][0]
-            y = snowflake_dict[sf_name][1]
-            length = snowflake_dict[sf_name][2]
+        for sf_name, value in snowflake_dict.items():
+            x = value[0]
+            y = value[1]
+            length = value[2]
             point = sd.get_point(x, y)
             sd.snowflake(center=point, length=length, color=sd.background_color)
-            snowflake_dict[sf_name][0] = snowflake_dict[sf_name][0] + sd.random_number(-5, 5)
-            snowflake_dict[sf_name][1] = snowflake_dict[sf_name][1] - sd.random_number(5, 20)
-            point2 = sd.get_point(snowflake_dict[sf_name][0], snowflake_dict[sf_name][1])
+            value[0] = value[0] + sd.random_number(-5, 5)
+            value[1] = value[1] - sd.random_number(5, 20)
+            point2 = sd.get_point(value[0], value[1])
             sd.snowflake(center=point2, length=length)
-            if snowflake_dict[sf_name][1] < 12:
-                snowflake_dict[sf_name][0] = sd.random_number(100, 1100)
-                snowflake_dict[sf_name][1] = snowflake_dict[sf_name][1] + 800
+            if value[1] < 12:
+                value[0] = sd.random_number(100, 1100)
+                value[1] = value[1] + 800
         sd.finish_drawing()
         sd.sleep(0.1)
-
-        # for index, sf_name in enumerate(secound_dic):
-        #     x = secound_dic[sf_name][0]
-        #     y = secound_dic[sf_name][1]
-        #     length = secound_dic[sf_name][2]
-        #     point = sd.get_point(x, y)
-        #     sd.snowflake(center=point, length=length, color=sd.background_color)
-        # sd.sleep(0.1)
-        # # sd.finish_drawing()
         if sd.user_want_exit():
-            print(snowflake_dict)
             break
 
 
