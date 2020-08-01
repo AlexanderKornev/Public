@@ -15,4 +15,28 @@
 # Создать рецепт своего бургера, по вашему вкусу.
 # Если не хватает инградиентов - создать соответствующие функции в модуле my_burger
 
-# TODO здесь ваш код
+import lesson_005.my_burger as mb
+
+mb.buns()
+mb.cutlet()
+mb.cheese()
+mb.cutlet()
+mb.cheese()
+mb.cucumber()
+mb.tomato()
+mb.mayo()
+mb.buns()
+
+
+print('БигМак:')
+mb.buns()
+mb.salat()
+mb.cheese()
+mb.cutlet()
+mb.sauce()
+mb.buns()
+mb.sauce()
+mb.salat()
+mb.cucumber()
+mb.cutlet()
+mb.bunss()
