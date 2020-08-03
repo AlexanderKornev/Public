@@ -6,6 +6,8 @@ from os.path import join
 
 import lesson_005.room_1 as r1
 import lesson_005.room_2 as r2
+# TODO, предлагаю вместо переменной comma сразу использовать её значение. Количество кода не поменяется,
+#  но избавимся от лишней переменной.
 comma = ', '
 print('В комнате room_1 живут:', comma.join(r1.folks))
 print('В комнате room_2 живут:', comma.join(r2.folks))

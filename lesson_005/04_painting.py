@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import simple_draw as sd
-from lesson_005.epoch_making_canvas.smile import smile
+from epoch_making_canvas.smile import smile
 sd.resolution = 1800, 800
 # Создать пакет, в который скопировать функции отрисовки из предыдущего урока
 #  - радуги
@@ -21,14 +21,15 @@ sd.resolution = 1800, 800
 # Приправить своей фантазией по вкусу (коты? коровы? люди? трактор? что придумается)
 
 
-from lesson_005.epoch_making_canvas import hoome_with_roof
-from lesson_005.epoch_making_canvas.rainbow import rainbow
-from lesson_005.epoch_making_canvas.sun import sun
-from lesson_005.epoch_making_canvas import snowflake
-from lesson_005.epoch_making_canvas.tree import draw_branches
-from lesson_005.epoch_making_canvas.ground import ground
+from epoch_making_canvas import hoome_with_roof
+from epoch_making_canvas.rainbow import rainbow
+from epoch_making_canvas.sun import sun
+from epoch_making_canvas import snowflake
+from epoch_making_canvas.tree import draw_branches
+from epoch_making_canvas.ground import ground
 
-
+# TODO, Александр, предлагаю все используемые параметры для отрисовки указать в функциях, как паарметры по умолчанию.
+#  В этом коде должны остаться только их вызовы. Анимируем картинку? =)
 ground(45)
 hoome_with_roof.home()
 rainbow(500, 2000)

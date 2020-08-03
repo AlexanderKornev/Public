@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import simple_draw as sd
-from simple_draw import Point
+from simple_draw import Point  # TODO, лишний импорт
 
 sd.resolution = (1200, 600)
 color = sd.COLOR_RED
