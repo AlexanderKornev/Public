@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import simple_draw as sd
-def smile(x, y, color):
+def smile(x=650, y=140, color=sd.COLOR_YELLOW):
     # Рисуем круг смайла
     point = sd.get_point(x, y)
     sd.circle(center_position=point, radius=40, color=color, width=5)
@@ -10,6 +10,7 @@ def smile(x, y, color):
     # Рисуем правый глаз
     right_eye = sd.get_point(x + 15, y + 20)
     sd.circle(center_position=right_eye, radius=5, color=color, width=2)
+
     # Рисуем нос
     nose_start = sd.get_point(x, y + 15)
     nose_end = sd.get_point(x, y)
@@ -26,5 +27,7 @@ def smile(x, y, color):
     mouth_3_start = mouth_1_end
     mouth_3_end = sd.get_point(x + 15, y - 10)
     sd.line(mouth_3_start, mouth_3_end, color=color, width=2)
-
+    sd.sleep(1)
+    sd.circle(center_position=right_eye, radius=5, color=sd.background_color, width=2)
+    sd.sleep(1)
 

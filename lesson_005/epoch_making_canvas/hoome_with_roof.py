@@ -37,8 +37,6 @@ def home():
     window_point2 = sd.get_point(550, 150)
     window_point3 = sd.get_point(600, 150)
     sd.line(start_point=window_point2, end_point=window_point3, width=3)
-    # смайл в окне
-    smile(x=650, y=140, color=sd.COLOR_YELLOW)
     # каркас дома
     left_bottom = sd.get_point(430, 50)
     right_top = sd.get_point(860, 250)

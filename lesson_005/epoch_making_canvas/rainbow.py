@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import simple_draw as sd
+sd.resolution = 1800, 800
 
-def rainbow(point_x, end_point_x):
+def rainbow(point_x=500, end_point_x=2000):
     rainbow_colors = (sd.COLOR_RED, sd.COLOR_ORANGE, sd.COLOR_YELLOW, sd.COLOR_GREEN,
                       sd.COLOR_CYAN, sd.COLOR_BLUE, sd.COLOR_PURPLE)
 

@@ -2,7 +2,7 @@
 import simple_draw as sd
 
 N = 20
-def snowfall(n):
+def snowfall(n=5):
     quantity_snowflakes = n
     snowflake_dict = {}
     for number_x in range(quantity_snowflakes):
@@ -28,6 +28,8 @@ def snowfall(n):
                 value[1] = value[1] + 800
         sd.finish_drawing()
         sd.sleep(0.1)
+
+
 
 
 
