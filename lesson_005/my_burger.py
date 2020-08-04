@@ -7,29 +7,29 @@
 #  - майонеза
 #  - сыра
 # В каждой функции выводить на консоль что-то вроде "А теперь добавим ..."
-def buns():
+def add_buns():
     print('А теперь добавим булочку!')
 
-def cutlet():
+def add_cutlet():
     print('А теперь добавим котлеты!')
 
-def cucumber():
+def add_cucumber():
     print('А теперь добавим оугрец!')
 
-def tomato():
+def add_tomato():
     print('А теперь добавим помидор!')
 
-def mayo():
+def add_mayo():
     print('А теперь добавим майонез!')
 
-def cheese():
+def add_cheese():
     print('А теперь добавим сырочек!')
 
-def salat():
+def add_salat():
     print('А теперь добавим салат!')
 
-def sauce():
+def add_sauce():
     print('А теперь добавим специальный соус!')
 
-def bunss():
+def add_bunss():
     print('А теперь добавим булочку с кунжутом!')
