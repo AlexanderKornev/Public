@@ -31,42 +31,36 @@ import simple_draw as sd
 
 
 
+# ground()
+# hoome_with_roof.home()
+# rainbow()
+# smile()
+# sun()
+# draw_branches()
+# draw_branches1()
+# snowflake.snowfall1()
+
+
+
 ground()
 hoome_with_roof.home()
+draw_branches()
+draw_branches1()
 while True:
-    sd.draw_background()
-    while True:
-        rainbow()
-        smile()
-        sun()
-        draw_branches()
-        draw_branches1()
-        snowflake.snowfall()
-        sd.take_background()
+
+    sd.start_drawing()
+    rainbow()
+    smile()
+    sun()
+
+    snowflake.snowfall()
+    sd.finish_drawing()
+    sd.sleep(0.1)
+
+    if sd.user_want_exit():
         break
 
-# TODO, Александр, для зачёта простой части, просто уберите циклы. Оставьте только прорисовку Ваших фукнций.
-#  Для усложнённой части используйте пожалуйста используйте пример ниже.
-# while True:
-#
-#     sd.start_drawing()
-#
-#
-#
-#     sd.finish_drawing()
-#     sd.sleep(0.1)
-#
-#     if sd.user_want_exit():
-#         break
 
-# TODO, как можно рисовать подмигивающий смайлик?
-#  Создаём переменную внутри функции, которая рандомно отдаёт 0 и 1. Если "1" - глаз закрыт, если "0" - открыт.
-# TODO, как можно рисовать переливающуюся радугу?
-#  Цвета радуги делаем внешней переменной.
-#  Прорисовываете один раз цвета. Удаляете последний элемент списка цветов и добавляете его в начало.
-# TODO, Как нарисовать снегопад.
-#  список снежинок - внешняя переменная. Цикл while в функции не участвует.
-#  За 1 цикл for прорисовываете снежинки и меняете их координаты во внешней переменной.
 
 
 # Усложненное задание (делать по желанию)
