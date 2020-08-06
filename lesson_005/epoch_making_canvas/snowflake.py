@@ -10,8 +10,8 @@ def snowfall(n=5):
         y = sd.random_number(800, 850)
         length = sd.random_number(5, 15)
         snowflake_dict[number_x] = [x, y, length]
-
-    while True:
+    stop = True
+    while stop:
         sd.start_drawing()
         for sf_name, value in snowflake_dict.items():
             x = value[0]
@@ -23,13 +23,9 @@ def snowfall(n=5):
             value[1] -= sd.random_number(5, 20)
             point2 = sd.get_point(value[0], value[1])
             sd.snowflake(center=point2, length=length)
-            if value[1] < 60:
+            if value[1] < 40:
                 value[0] = sd.random_number(50, 100)
                 value[1] = value[1] + 800
+                stop = False
         sd.finish_drawing()
         sd.sleep(0.1)
-
-
-
-
-

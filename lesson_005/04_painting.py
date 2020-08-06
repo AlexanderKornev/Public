@@ -27,16 +27,23 @@ from epoch_making_canvas.sun import sun
 from epoch_making_canvas import snowflake
 from epoch_making_canvas.tree import draw_branches, draw_branches1
 from epoch_making_canvas.ground import ground
+import simple_draw as sd
+
 
 ground()
 hoome_with_roof.home()
-rainbow()
 while True:
-    smile()
-    sun()
-    draw_branches()
-    draw_branches1()
-    # snowflake()
+    sd.draw_background()
+    while True:
+        rainbow()
+        smile()
+        sun()
+        draw_branches()
+        draw_branches1()
+        snowflake.snowfall()
+        sd.take_background()
+        break
+
 
 
 
