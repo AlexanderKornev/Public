@@ -44,4 +44,53 @@
 # Это пример применения SOLID принципа (см https://goo.gl/GFMoaI) в архитектуре программ.
 # Точнее, в этом случае важен принцип единственной ответственности - https://goo.gl/rYb3hT
 
-# TODO здесь ваш код...
+from lesson_006.mastermind_engine import guess_the_number, check_the_number, number_list
+
+guess_the_number()
+count_step = 0
+
+while True:
+    print('PC загадал число четырехзначное число, в котором ни одна цифра не повторяет другую, '
+                       'а первая не равна нулю, например "1234". Угадайте его!')
+    user_input = input('Введите число : ')
+    if len(user_input) != 4:
+        print('Вы ввели число не из четырех символов или вообще не число!')
+        continue
+    if len(user_input) == 4:
+        ok = 0
+        user_number_list = []
+        for value in range(4) :
+            user_number_list += [int(str(user_input)[value])]
+        for position, number in enumerate(user_number_list) :
+            if user_number_list[0] == 0 or number in user_number_list[position+1:]:
+                print('Вы ввели неверное число! Число не должно начинаться с нуля или содержать повторяющиеся цифры. '
+                      'Вы ошиблись, когда вводили:', number)
+                break
+        else:
+            ok = 1
+            count_step = count_step + 1
+    if ok == 1:
+        result = check_the_number(number_list=number_list, user_number=user_number_list)
+        print(result)
+        if result['bulls'] < 4:
+            continue
+        if result['bulls'] == 4:
+            print('Вы выиграли за ', count_step, 'шагов. Поздравляем!')
+            user_input_1 = input('Хотите еще партию? "да" или "нет": ')
+            if user_input_1 == 'да' :
+                number_list = []
+                guess_the_number()
+                print(guess_the_number())
+                continue
+            elif user_input_1 == 'нет' :
+                print('Дотвиданья!')
+        break
+
+
+
+
+
+
+
+
+
