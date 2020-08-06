@@ -48,7 +48,7 @@ from lesson_006.mastermind_engine import guess_the_number, check_the_number, num
 
 guess_the_number()
 count_step = 0
-
+print(guess_the_number())
 while True:
     print('PC загадал число четырехзначное число, в котором ни одна цифра не повторяет другую, '
                        'а первая не равна нулю, например "1234". Угадайте его!')
@@ -61,20 +61,22 @@ while True:
         user_number_list = []
         for value in range(4) :
             user_number_list += [int(str(user_input)[value])]
-        for position, number in enumerate(user_number_list) :
-            if user_number_list[0] == 0 or number in user_number_list[position+1:]:
-                print('Вы ввели неверное число! Число не должно начинаться с нуля или содержать повторяющиеся цифры. '
-                      'Вы ошиблись, когда вводили:', number)
-                break
+        # for position, number in enumerate(user_number_list) :
+        #     if user_number_list[0] == 0 or number in user_number_list[position+1:]:
+        #         print('Вы ввели неверное число! Число не должно начинаться с нуля или содержать повторяющиеся цифры. '
+        #               'Вы ошиблись, когда вводили:', number)
+        #         break
+        if user_number_list[0] == 0 or len(user_number_list) != len(set(user_number_list)):
+            print('Вы ввели неверное число! Число не должно начинаться с нуля или содержать повторяющиеся цифры.')
         else:
             ok = 1
             count_step = count_step + 1
-    if ok == 1:
+    if ok == 1 :
         result = check_the_number(number_list=number_list, user_number=user_number_list)
         print(result)
-        if result['bulls'] < 4:
+        if result['bulls'] < 4 :
             continue
-        if result['bulls'] == 4:
+        if result['bulls'] == 4 :
             print('Вы выиграли за ', count_step, 'шагов. Поздравляем!')
             user_input_1 = input('Хотите еще партию? "да" или "нет": ')
             if user_input_1 == 'да' :
