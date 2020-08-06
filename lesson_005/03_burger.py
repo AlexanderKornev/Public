@@ -17,7 +17,6 @@
 
 import lesson_005.my_burger as mb
 
-
 mb.add_buns()
 mb.add_cutlet()
 mb.add_cheese()
@@ -27,7 +26,6 @@ mb.add_cucumber()
 mb.add_tomato()
 mb.add_mayo()
 mb.add_buns()
-
 
 print('БигМак:')
 mb.add_buns()
@@ -41,3 +39,5 @@ mb.add_salat()
 mb.add_cucumber()
 mb.add_cutlet()
 mb.add_bunss()
+
+# зачёт!
