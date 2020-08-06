@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import simple_draw as sd
 from epoch_making_canvas.smile import smile
+
 sd.resolution = 1800, 800
 # Создать пакет, в который скопировать функции отрисовки из предыдущего урока
 #  - радуги
@@ -29,8 +30,6 @@ from epoch_making_canvas.tree import draw_branches, draw_branches1
 from epoch_making_canvas.ground import ground
 import simple_draw as sd
 
-
-
 # ground()
 # hoome_with_roof.home()
 # rainbow()
@@ -39,7 +38,6 @@ import simple_draw as sd
 # draw_branches()
 # draw_branches1()
 # snowflake.snowfall1()
-
 
 
 ground()
@@ -55,16 +53,14 @@ while True:
 
     snowflake.snowfall()
     sd.finish_drawing()
-    sd.sleep(0.1)
 
     if sd.user_want_exit():
         break
-
-
-
 
 # Усложненное задание (делать по желанию)
 # Анимировать картину.
 # Пусть слева идет снегопад, радуга переливается цветами, смайлик моргает, солнце крутит лучами, етс.
 # Задержку в анимировании все равно надо ставить, пусть даже 0.01 сек - так библиотека устойчивей работает.
 sd.pause()
+
+# зачёт!
