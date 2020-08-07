@@ -49,7 +49,7 @@ from termcolor import cprint, colored
 
 
 local_guess_the_number = guess_the_number() # если ввести локальную переменную, то при ее последующем вызове функция
-                                            # снова вызовется и число поменяется
+                                            # снова вызовется и число поменяется.
 count_step = 0
 while True:
     print(local_guess_the_number)
