@@ -44,7 +44,7 @@
 # Это пример применения SOLID принципа (см https://goo.gl/GFMoaI) в архитектуре программ.
 # Точнее, в этом случае важен принцип единственной ответственности - https://goo.gl/rYb3hT
 
-from lesson_006.mastermind_engine import guess_the_number, check_the_number, number_list
+from mastermind_engine import guess_the_number, check_the_number, number_list
 
 guess_the_number()
 count_step = 0
