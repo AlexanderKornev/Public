@@ -13,7 +13,7 @@ import simple_draw as sd
 #
 # В текущем модуле реализовать главный цикл падения снежинок,
 # обращаясь ТОЛЬКО к функциям модуля snowfall
-from lesson_006.snowfall import create_snowflakes, snowflakes_color, move_snowflakes, bottom_screen, delete_snowflake, count, snowflake_dict
+from python_base.lesson_006.snowfall import create_snowflakes, snowflakes_color, move_snowflakes, bottom_screen, delete_snowflake, count, snowflake_dict
 
 cr_snflks = create_snowflakes()
 while True:
