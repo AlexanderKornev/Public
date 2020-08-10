@@ -2,42 +2,47 @@
 
 # Движок игры «Быки и коровы»
 from random import randint
-from termcolor import cprint
+from termcolor import cprint, colored
 
 
-def check_user_input(user_input):
+def check_user_input():
 
-    # TODO, Александр, теперь, давайте немного поправим эту часть.
+    #  Александр, теперь, давайте немного поправим эту часть.
     #  1. Возвращать будет или False или список user_number_list (Список с Элементами всегда True). Так будет правильнее.
     #  2. Проверки осуществим с помощью одного условного оператора if/elif/else.
     #  Будем проверять "Количество неповторяющихся элементов в списке", "является ли числом", "начинается ли с нуля"
     #  И "количество символов".
     #  3. Тут же реализуем цикл while. Если пользователь ввёл некорректное число, повторяем цикл и просим ввести
     #  число заново. Если корректное - возвращаем число для выхода из цикла.
+    # TODO сейчас реализовал в соответствии с третьим пунктом. Не совсем понимаю, как можно без цикла IF/ELSE в
+    # основном модуле реализовать просьбу снова ввести число от пользователя. Сейчас число от пользователя я запрашиваю
+    #   внутри функции check_user_input, при этом выполняя условие третей тудушки "Если пользователь ввёл некорректное " \
+    # "число, повторяем цикл и просим ввести число заново." Но это расходится с принципом единственной ответственности.
+    #   Может я не так понял этот пункт? Как мне попросить ввести число пользователя из функции, если запрос на введение
+    # числа должен быть сделан из 01_mastermind?
 
     user_number_list = []
-    if len(user_input) != 4:
-        return 1, cprint('Вы ввели число не из четырех символов или вообще не число!', color='red')
-    if len(user_input) == 4:
-        for value in range(4) :
+    while True:
+        user_input = input(colored('Введите число : ', color='yellow'))
+        for value in range(len(user_input)):
             user_number_list += [int(str(user_input)[value])]
-        if user_number_list[0] == 0 or len(user_number_list) != len(set(user_number_list)):
-            return 1, cprint('Вы ввели неверное число! Число не должно начинаться с нуля или содержать '
-                             'повторяющиеся цифры.', color='red')
+        if len(user_input) != 4 or user_number_list[0] == 0 or len(user_number_list) != len(set(user_number_list)):
+            cprint('Вы ввели неверное число! Число должно состоять из четырех неповторяющихся цифр и'
+                   ' не должно начинаться с нуля.', color='red')
+            user_number_list = []
+            continue
         else:
-            print(user_number_list)
-    return 0, user_number_list
+            break
+    return user_number_list
 
 
 number_list = []
 def guess_the_number():
     global number_list
-    number_list= []
-    # TODO, эту часть тоже можно упростить. Пожалуйста, подумайте как =)
+    number_list = []
+    x = randint(1, 9)
+    number_list += [x]
     while len(number_list) != 4:
-        if len(number_list) < 1:
-            x = randint(1, 9)
-            number_list += [x]
         y = randint(0, 9)
         if y not in number_list:
             number_list += [y]

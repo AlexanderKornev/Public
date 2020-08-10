@@ -44,28 +44,23 @@
 # Это пример применения SOLID принципа (см https://goo.gl/GFMoaI) в архитектуре программ.
 # Точнее, в этом случае важен принцип единственной ответственности - https://goo.gl/rYb3hT
 
-from mastermind_engine import guess_the_number, check_the_number, check_user_input
+from lesson_006.mastermind_engine import guess_the_number, check_the_number, check_user_input
 from termcolor import cprint, colored
 
 
 local_guess_the_number = guess_the_number() # если ввести локальную переменную, то при ее последующем вызове функция
-                                            # снова вызовется и число поменяется.
+                                          # снова вызовется и число поменяется.
 count_step = 0
 while True:
-    print(local_guess_the_number)
     cprint('PC загадал число четырехзначное число, в котором ни одна цифра не повторяет другую, '
                        'а первая не равна нулю, например "1234". Угадайте его!', color='green')
-    user_input = input(colored('Введите число : ', color='yellow'))
-    user_number_check = check_user_input(user_input=user_input) # и для проверки числа локальную лучше использовать
-    if user_number_check[0] != 0:
+    user_input = check_user_input()
+    check_result = check_the_number(user_input)
+    count_step = count_step + 1
+    cprint(check_result, color='magenta')
+    if check_result['bulls'] < 4:
         continue
-    else:
-        result = check_the_number(user_number=user_number_check[1]) # number_list=local_guess_the_number,
-        count_step = count_step + 1
-        cprint(result, color='magenta')
-    if result['bulls'] < 4:
-        continue
-    elif result['bulls'] == 4:
+    elif check_result['bulls'] == 4:
         cprint('Вы выиграли за {} шаг/ов. Поздравляем!'.format(count_step), color='blue')
     user_input_new = input(colored('Хотите еще партию? "да" или "нет": ', color='cyan'))
     if user_input_new == 'да':
@@ -73,7 +68,7 @@ while True:
         count_step = 0
         continue
     elif user_input_new == 'нет':
-        cprint('Дотвиданья!', color='pink')  # TODO цвета 'pink' в termcolor нет =)
+        cprint('Дотвиданья!', color='cyan')
     break
 
 
