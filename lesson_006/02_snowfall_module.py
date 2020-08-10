@@ -13,9 +13,22 @@ import simple_draw as sd
 #
 # В текущем модуле реализовать главный цикл падения снежинок,
 # обращаясь ТОЛЬКО к функциям модуля snowfall
+from lesson_006.snowfall import create_snowflakes, snowflakes_color, move_snowflakes, bottom_screen, delete_snowflake, count, snowflake_dict
 
-# создать_снежинки(N)
+cr_snflks = create_snowflakes()
 while True:
+    snowflakes_color(color=sd.background_color)
+    move_snowflakes()
+    snowflakes_color(color=sd.COLOR_CYAN)
+    bottom_screen_fn = bottom_screen()
+    print(bottom_screen_fn)
+    if len(bottom_screen_fn) > 0:
+        delete_snowflake()
+        create_snowflakes()
+
+
+
+
     #  нарисовать_снежинки_цветом(color=sd.background_color)
     #  сдвинуть_снежинки()
     #  нарисовать_снежинки_цветом(color)
