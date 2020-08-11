@@ -5,7 +5,7 @@ from random import randint
 from termcolor import cprint, colored
 
 
-def check_user_input():
+def check_user_input():  # проверка числа, введоного пользователем
     while True:
         user_input = input(colored('Введите число : ', color='yellow'))
         user_number_list = list(map(int, user_input))

@@ -44,20 +44,16 @@
 # Это пример применения SOLID принципа (см https://goo.gl/GFMoaI) в архитектуре программ.
 # Точнее, в этом случае важен принцип единственной ответственности - https://goo.gl/rYb3hT
 
-from lesson_006.mastermind_engine import guess_the_number, check_the_number, check_user_input
+import lesson_006.mastermind_engine as me
 from termcolor import cprint, colored
-# TODO Можно упростить импорт
-#  import lesson_006.mastermind_engine as me
-#  Как в таком случае будет происходить вызов функции?
 
-local_guess_the_number = guess_the_number() # если ввести локальную переменную, то при ее последующем вызове функция
-                                          # снова вызовется и число поменяется.
+local_guess_the_number = me.guess_the_number()
 count_step = 0
 while True:
     cprint('PC загадал число четырехзначное число, в котором ни одна цифра не повторяет другую, '
                        'а первая не равна нулю, например "1234". Угадайте его!', color='green')
-    user_input = check_user_input()
-    check_result = check_the_number(user_input)
+    user_input = me.check_user_input()
+    check_result = me.check_the_number(user_input)
     count_step = count_step + 1
     cprint(check_result, color='magenta')
     if check_result['bulls'] < 4:
@@ -66,7 +62,7 @@ while True:
         cprint('Вы выиграли за {} шаг/ов. Поздравляем!'.format(count_step), color='blue')
     user_input_new = input(colored('Хотите еще партию? "да" или "нет": ', color='cyan'))
     if user_input_new == 'да':
-        local_guess_the_number = guess_the_number()
+        local_guess_the_number = me.guess_the_number()
         count_step = 0
         continue
     elif user_input_new == 'нет':
