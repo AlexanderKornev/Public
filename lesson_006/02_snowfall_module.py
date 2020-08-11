@@ -15,6 +15,13 @@ import simple_draw as sd
 # обращаясь ТОЛЬКО к функциям модуля snowfall
 from lesson_006.snowfall import create_snowflakes, snowflakes_color, move_snowflakes, bottom_screen, delete_snowflake, count, snowflake_dict
 
+# TODO Можно упростить импорт
+#  import lesson_006.snowfall as sn
+#  Как в таком случае будет происходить вызов функции?
+
+
+
+
 create_snowflakes()
 while True:
     snowflakes_color(color=sd.background_color)

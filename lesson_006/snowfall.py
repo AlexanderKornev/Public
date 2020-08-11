@@ -43,7 +43,7 @@ def move_snowflakes():
         value[0] += sd.random_number(-5, 5)
         value[1] -= sd.random_number(5, 20)
         point2 = sd.get_point(value[0], value[1])
-        sd.snowflake(center=point2, length=value[2])  # TODO snowflake_dict[sf_name] == "value"
+        sd.snowflake(center=point2, length=value[2])  # snowflake_dict[sf_name] == "value"
 
 
 bottom_screen_list = []  # список для удаления снежинок.
@@ -51,22 +51,24 @@ bottom_screen_list = []  # список для удаления снежинок
 
 def bottom_screen():
     global bottom_screen_list
-    # TODO, в этом месте тоже лучше идти с items по словарю.
+    # , в этом месте тоже лучше идти с items по словарю.
     for sf_name, value in snowflake_dict.items():
         if value[1] < 10:
             bottom_screen_list += [sf_name]  # Заполняем ключами упавших снежинок? Почему при y < 400?
-     # sorted(bottom_screen_list)  # TODO Лишнее действие
+    # sorted(bottom_screen_list)  #  Лишнее действие
     return bottom_screen_list
 
 
 count = 0
 
 new_flakes = []
+
+
 def delete_snowflake():
     global bottom_screen_list, snowflake_dict
     # я не понимаю, как корректно удалить из словаря со снежинками значения
     # (понимаю, что методом dic.pop('key'), но потом не происходит новых снежинок
-    # TODO, Александр, хороший вопрос.
+    # , Александр, хороший вопрос.
     #  У нас есть словарь для хранения данных по снежинкам snowflake_dict.
     #  Сейчас ключ новой снежинки идёт в диапазоне от "0" до "quantity_snowflakes" не включительно.
     #  Если снежинка "0" не упала, мы всё равно её перезапишем. Это не очень правильно.
@@ -77,7 +79,7 @@ def delete_snowflake():
         x = sd.random_number(100, 1100)
         y = sd.random_number(700, 850)
         length = sd.random_number(5, 30)
-        snowflake_dict[delete_number+10] = [x, y, length]
+        snowflake_dict[delete_number + 10] = [x, y, length]
     bottom_screen_list = []
     return snowflake_dict
 
@@ -85,7 +87,7 @@ def delete_snowflake():
     #  Далее Вызываем create_snowflakes. Но его необходимо немного поменять.
     #  Давайте удалив одну. Создадим другую с её ключом. Как вариант =) Или максимальное значение ключа + 1.
 
-    #  TODO Или вариант - сделать список, который хранит словари с данными для отрисовки снежинок.
+    #   Или вариант - сделать список, который хранит словари с данными для отрисовки снежинок.
     #   Тогда будет просто pop и append.
 
     # global bottom_screen_list, count, snowflake_dict
