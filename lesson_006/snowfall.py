@@ -25,7 +25,6 @@ def create_snowflakes(quantity_snowflakes=10):
         y = sd.random_number(700, 800)
         length = sd.random_number(5, 30)
         snowflake_dict[number_x] = [x, y, length]
-        print(snowflake_dict)
     return snowflake_dict
 
 
