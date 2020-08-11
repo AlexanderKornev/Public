@@ -14,7 +14,7 @@ sd.resolution = (1200, 1000)
 # В текущем модуле реализовать главный цикл падения снежинок,
 # обращаясь ТОЛЬКО к функциям модуля snowfall
 
-snowflake_dict = {}  # Словарь со снежинками для отрисовки
+snowflake_dict = {}
 quantity_snowflakes = 30
 
 
@@ -46,14 +46,14 @@ def move_snowflakes():
         sd.snowflake(center=point2, length=value[2], color=sd.COLOR_CYAN)
 
 
-bottom_screen_list = []  # список для удаления снежинок.
+bottom_screen_list = []
 
 
 def bottom_screen():
     global bottom_screen_list
     for sf_name, value in snowflake_dict.items():
         if value[1] < 10:
-            bottom_screen_list += [sf_name]  # Заполняем ключами упавших снежинок? Почему при y < 400?
+            bottom_screen_list += [sf_name]
     return bottom_screen_list
 
 

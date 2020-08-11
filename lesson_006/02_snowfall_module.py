@@ -13,24 +13,16 @@ import simple_draw as sd
 #
 # В текущем модуле реализовать главный цикл падения снежинок,
 # обращаясь ТОЛЬКО к функциям модуля snowfall
-from lesson_006.snowfall import create_snowflakes, snowflakes_color, move_snowflakes, \
-    bottom_screen, delete_and_creat_snowflake
+import lesson_006.snowfall as sn
 
-# TODO Можно упростить импорт
-#  import lesson_006.snowfall as sn
-#  Как в таком случае будет происходить вызов функции?
-
-
-
-
-create_snowflakes()
+sn.create_snowflakes()
 while True:
-    snowflakes_color(color=sd.background_color)
-    move_snowflakes()
-    snowflakes_color(color=sd.COLOR_CYAN)
-    bottom_screen_fn = bottom_screen()
+    sn.snowflakes_color(color=sd.background_color)
+    sn.move_snowflakes()
+    sn.snowflakes_color(color=sd.COLOR_CYAN)
+    bottom_screen_fn = sn.bottom_screen()
     if len(bottom_screen_fn) > 0:
-        delete_and_creat_snowflake()
+        sn.delete_and_creat_snowflake()
         continue
     sd.sleep(0.1)
     if sd.user_want_exit():
