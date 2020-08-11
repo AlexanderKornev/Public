@@ -51,7 +51,7 @@ local_guess_the_number = me.guess_the_number()
 count_step = 0
 while True:
     cprint('PC загадал число четырехзначное число, в котором ни одна цифра не повторяет другую, '
-                       'а первая не равна нулю, например "1234". Угадайте его!', color='green')
+           'а первая не равна нулю, например "1234". Угадайте его!', color='green')
     user_input = me.check_user_input()
     check_result = me.check_the_number(user_input)
     count_step = count_step + 1
@@ -69,5 +69,4 @@ while True:
         cprint('Дотвиданья!', color='cyan')
     break
 
-
-
+# зачёт!
