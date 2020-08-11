@@ -46,7 +46,9 @@
 
 from lesson_006.mastermind_engine import guess_the_number, check_the_number, check_user_input
 from termcolor import cprint, colored
-
+# TODO Можно упростить импорт
+#  import lesson_006.mastermind_engine as me
+#  Как в таком случае будет происходить вызов функции?
 
 local_guess_the_number = guess_the_number() # если ввести локальную переменную, то при ее последующем вызове функция
                                           # снова вызовется и число поменяется.
@@ -70,12 +72,6 @@ while True:
     elif user_input_new == 'нет':
         cprint('Дотвиданья!', color='cyan')
     break
-
-
-
-
-
-
 
 
 
