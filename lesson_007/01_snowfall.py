@@ -11,7 +11,7 @@ sd.resolution = 1800, 900
 #  - отрисовку
 
 
-class Snowflake :
+class Snowflake:
 
     def __init__(self, name=None) :
         self.name = name
@@ -19,30 +19,31 @@ class Snowflake :
         self.y = sd.random_number(700, 800)
         self.length = sd.random_number(5, 30)
 
-
-    def __str__(self) :
+    def __str__(self):
         return self
 
-    def move(self) :
+    def move(self):
         self.x += sd.random_number(-5, 5)
         self.y -= sd.random_number(5, 20)
 
-    def clear_previous_picture(self) :
+    def clear_previous_picture(self):
         point = sd.get_point(self.x, self.y)
         sd.snowflake(center=point, length=self.length, color=sd.background_color)
 
-    def draw(self) :
+    def draw(self):
         point = sd.get_point(self.x, self.y)
         sd.snowflake(center=point, length=self.length)
 
-    def can_fall(self) :
-        if self.y > 10 :
+    def can_fall(self):
+        if self.y > 10:
             return True
-        else :
+        else:
             return False
 
 
 snowflake_list = []
+
+
 def get_flakes(count):
     global snowflake_list
     for name in range(count):
@@ -51,7 +52,6 @@ def get_flakes(count):
 
 
 def get_fallen_flakes():
-    global list_for_delete
     for_remove = []
     count = 0
     for i in snowflake_list:
@@ -64,12 +64,12 @@ def get_fallen_flakes():
 def append_flakes(count):
     get_flakes(count=count)
 
+
 def remove(for_remove_list):
     global snowflake_list
     for i in for_remove_list:
         snowflake_list.remove(i)
     return snowflake_list
-
 
 
 # flake = Snowflake()
@@ -86,7 +86,7 @@ def remove(for_remove_list):
 
 # # шаг 2: создать снегопад - список объектов Снежинка в отдельном списке, обработку примерно так:
 
-flakes = get_flakes(10) # создать список снежинок
+flakes = get_flakes(10)  # создать список снежинок
 
 while True:
     for flake in flakes:
@@ -101,5 +101,5 @@ while True:
     sd.sleep(0.1)
     if sd.user_want_exit():
         break
-#
+
 sd.pause()
