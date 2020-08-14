@@ -95,7 +95,7 @@ print(Fire(), '+', Ground(), '=', Fire() + Ground())
 
 
 
-class Could:
+class Cold:
     def __str__(self):
         return 'ХОООЛОД'
 
@@ -103,17 +103,31 @@ class Could:
         if isinstance(other, Water):
             return Ice()
         if isinstance(other, Wind):
-            return
-        if isinstance(other, Fire):
-            return
-        if isinstance(other, Water):
-            return
+            return Blizzard()
+        if isinstance(other, Ground):
+            return Enternal_frost()
 
 
 
 class Ice:
     def __str__(self):
         return 'Ice, ice, baby'
+
+class Blizzard:
+    def __str__(self):
+        return 'Метелица!'
+
+class Enternal_frost:
+    def __str__(self):
+        return 'Вечная мерзлота'
+
+
+print(Cold(), '+', Water(), '=', Cold() + Water())
+print(Cold(), '+', Wind(), '=', Cold() + Wind())
+print(Cold(), '+', Ground(), '=', Cold() + Ground())
+
+
+
 
 
 # Усложненное задание (делать по желанию)
