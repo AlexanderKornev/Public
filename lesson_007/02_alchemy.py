@@ -29,10 +29,12 @@ class Water():
         #  и добавть else. Вернём None, если не одно из условий не сработало. Так во всём коде =)
         if isinstance(other, Wind):
             return Storm()
-        if isinstance(other, Fire):
+        elif isinstance(other, Fire):
             return Steam()
-        if isinstance(other, Ground):
+        elif isinstance(other, Ground):
             return Mud()
+        else:
+            return None
 
 
 class Wind():
@@ -42,8 +44,10 @@ class Wind():
     def __add__(self, other):
         if isinstance(other, Fire):
             return Lightning()
-        if isinstance(other, Ground):
+        elif isinstance(other, Ground):
             return Dust()
+        else:
+            return None
 
 
 class Fire():
@@ -53,6 +57,8 @@ class Fire():
     def __add__(self, other):
         if isinstance(other, Ground):
             return Lava()
+        else:
+            return None
 
 
 class Ground():
@@ -111,10 +117,12 @@ class Cold:
     def __add__(self, other):
         if isinstance(other, Water):
             return Ice()
-        if isinstance(other, Wind):
+        elif isinstance(other, Wind):
             return Blizzard()
-        if isinstance(other, Ground):
+        elif isinstance(other, Ground):
             return Enternal_frost()
+        else:
+            return None
 
 
 class Ice:
@@ -139,3 +147,5 @@ print(Cold(), '+', Ground(), '=', Cold() + Ground())
 # Усложненное задание (делать по желанию)
 # Добавить еще элемент в игру.
 # Придумать что будет при сложении существующих элементов с новым.
+
+
