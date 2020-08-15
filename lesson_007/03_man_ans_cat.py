@@ -71,10 +71,10 @@ class Man:
             self.house.cat_food += 50
 
     def clean_house(self):
-            if self.house.dirt >= 100:
-                cprint('{} убрался в доме!'.format(self.name), color='magenta')
-            self.fullness -= 20
-            self.house.dirt -= 100
+        if self.house.dirt >= 100:
+            cprint('{} убрался в доме!'.format(self.name), color='magenta')
+        self.fullness -= 20
+        self.house.dirt -= 100
 
 
     def go_to_the_house(self, house):
@@ -105,11 +105,19 @@ class Man:
             self.watch_MTV()
 
     def get_cat(self, name_cat, house):
-        Cat.house = house #TODO не понимаю, как внутри этого метода присвоить значение атрибуту внутри
+        Cat(name_cat).house = house  # не понимаю, как внутри этого метода присвоить значение атрибуту внутри
+        # TODO в этом месте Вы вызываете класс Кота. Вот пример Вашего кода, где вызываете и сохраняете класс Кота
+        #  felix = Cat(name='Феликс')
+        #  Дальше подбираете кота
+        #  bivis.get_cat(name_cat=felix, house=my_sweet_home)
+        #  Получается Cat(name_cat).house = house равно Cat(Cat(name='Феликс')).house = house
+        #  name_cat это не имя кота, а Класс кота.
+        #  У класса Кот, есть аргумент house. Давайте попробуем поселить кота так же, как селим человека.
+
+        # в свой дом
         # инита кота. Сейчас прописано жестко
         self.fullness -= 10
         cprint('Взяли кота {} в дом'.format(name_cat), color='cyan')
-
 
 class House:
 
@@ -132,12 +140,14 @@ class Cat:
     def __init__(self, name):
         self.name = name
         self.fullness = 50
-        
+        self.house = my_sweet_home  # В этом месте должен быть просто None. Коту мы дом потом присвоим =)
 
     def __str__(self):
         return '{} - зе кот! Сытость {}'.format(self.name, self.fullness)
 
     def eat(self):
+        # TODO, Александр, давайте немного поменяем условие. Если кошачьей еды больше или равно тому,
+        #  что может съесть кот определённого кол-ва, то кот есть. В противном случае - скончается.
         if self.house.cat_food <= 0:
             cprint('Котик {} скончался от недостатка в питании..'.format(self.name), color='red')
             return
@@ -182,6 +192,7 @@ class Cat:
         else:
             self.do_nothing()
 
+
 # Кот может есть, спать и драть обои - необходимо реализовать соответствующие методы.
 # Когда кот спит - сытость уменьшается на 10
 # Когда кот ест - сытость увеличивается на 20, кошачья еда в доме уменьшается на 10.
@@ -193,15 +204,17 @@ class Cat:
 bivis = Man(name='Бивис')
 my_sweet_home = House()
 bivis.go_to_the_house(house=my_sweet_home)
+
+# TODO, предлагаю подумать, как добавлять котов в цикле
 felix = Cat(name='Феликс')
 bivis.get_cat(name_cat=felix, house=my_sweet_home)
-print(felix.house)
 edmund = Cat(name='Эдмунд')
 bivis.get_cat(name_cat=edmund, house=my_sweet_home)
 bigglesworth = Cat(name='Бигглсуорт')
 bivis.get_cat(name_cat=bigglesworth, house=my_sweet_home)
 # leopold = Cat(name='Леопольд')
 # bivis.get_cat(name_cat=leopold, house=my_sweet_home)
+# TODO, Александр, пожалуйста, обратите внимание, все в итоге должны выжить =)
 for day in range(1, 365):
     print('================ день {} =================='.format(day))
     bivis.act()

@@ -20,19 +20,20 @@
 #   print(Fire(), '+', Air(), '=', Fire() + Air())
 
 
-
-
 class Water():
     def __str__(self):
         return 'Вода'
 
     def __add__(self, other):
+        # TODO, Александр, предлагаю объединить наши блоки if в один условный операторы if/elif
+        #  и добавть else. Вернём None, если не одно из условий не сработало. Так во всём коде =)
         if isinstance(other, Wind):
             return Storm()
         if isinstance(other, Fire):
             return Steam()
         if isinstance(other, Ground):
             return Mud()
+
 
 class Wind():
     def __str__(self):
@@ -44,41 +45,50 @@ class Wind():
         if isinstance(other, Ground):
             return Dust()
 
+
 class Fire():
     def __str__(self):
         return 'Огонь'
+
     def __add__(self, other):
         if isinstance(other, Ground):
             return Lava()
+
 
 class Ground():
     def __str__(self):
         return 'Земля'
 
+
 class Storm():
     def __str__(self):
         return 'ШТОООООРРРМ'
+
 
 class Steam():
     def __str__(self):
         return 'Gabe Newell'
 
+
 class Mud():
     def __str__(self):
         return 'Грязь!!!'
+
 
 class Lightning():
     def __str__(self):
         return 'Молния!!!'
 
+
 class Dust():
     def __str__(self):
         return 'пыль...'
 
+
 class Lava():
     def __str__(self):
         return 'ЛАВА!!!!'
-    
+
 
 #   Вода + Воздух = Шторм
 #   Вода + Огонь = Пар
@@ -94,7 +104,6 @@ print(Wind(), '+', Ground(), '=', Wind() + Ground())
 print(Fire(), '+', Ground(), '=', Fire() + Ground())
 
 
-
 class Cold:
     def __str__(self):
         return 'ХОООЛОД'
@@ -108,14 +117,15 @@ class Cold:
             return Enternal_frost()
 
 
-
 class Ice:
     def __str__(self):
         return 'Ice, ice, baby'
 
+
 class Blizzard:
     def __str__(self):
         return 'Метелица!'
+
 
 class Enternal_frost:
     def __str__(self):
@@ -125,10 +135,6 @@ class Enternal_frost:
 print(Cold(), '+', Water(), '=', Cold() + Water())
 print(Cold(), '+', Wind(), '=', Cold() + Wind())
 print(Cold(), '+', Ground(), '=', Cold() + Ground())
-
-
-
-
 
 # Усложненное задание (делать по желанию)
 # Добавить еще элемент в игру.
