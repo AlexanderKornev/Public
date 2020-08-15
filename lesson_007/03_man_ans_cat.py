@@ -105,10 +105,11 @@ class Man:
             self.watch_MTV()
 
     def get_cat(self, name_cat, house):
-        Cat(name_cat).house = house #TODO не понимаю, как внутри этого метода присвоить значение атрибуту внутри
+        Cat.house = house #TODO не понимаю, как внутри этого метода присвоить значение атрибуту внутри
         # инита кота. Сейчас прописано жестко
         self.fullness -= 10
         cprint('Взяли кота {} в дом'.format(name_cat), color='cyan')
+
 
 class House:
 
@@ -126,10 +127,11 @@ class House:
 
 class Cat:
 
+    house = None
+
     def __init__(self, name):
         self.name = name
         self.fullness = 50
-        self.house = my_sweet_home
         
 
     def __str__(self):
@@ -144,15 +146,24 @@ class Cat:
         self.house.cat_food -= 10
 
     def sleep(self):
+        if self.fullness <= 0:
+            cprint('Котик {} скончался от недостатка в питании..'.format(self.name), color='red')
+            return
         self.fullness -= 10
         cprint('Котик {} сладко спит.'.format(self.name), color='grey')
 
     def play(self):
+        if self.fullness <= 0:
+            cprint('Котик {} скончался от недостатка в питании..'.format(self.name), color='red')
+            return
         self.fullness -= 10
         self.house.dirt += 5
         cprint('Котик {} играет с обоями..'.format(self.name), color='grey')
 
     def do_nothing(self):
+        if self.fullness <= 0:
+            cprint('Котик {} скончался от недостатка в питании..'.format(self.name), color='red')
+            return
         self.fullness -= 5
         cprint('Я котик по имени {} и сейчас я не делаю ничего!'.format(self.name), color='cyan')
 
@@ -184,6 +195,7 @@ my_sweet_home = House()
 bivis.go_to_the_house(house=my_sweet_home)
 felix = Cat(name='Феликс')
 bivis.get_cat(name_cat=felix, house=my_sweet_home)
+print(felix.house)
 edmund = Cat(name='Эдмунд')
 bivis.get_cat(name_cat=edmund, house=my_sweet_home)
 bigglesworth = Cat(name='Бигглсуорт')
