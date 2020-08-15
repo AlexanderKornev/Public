@@ -40,10 +40,10 @@ class Man:
         )
 
     def eat(self):
-        if self.house.food >= 10:
+        if self.house.food >= 20:
             cprint('{} поел'.format(self.name), color='yellow')
-            self.fullness += 10
-            self.house.food -= 10
+            self.fullness += 20
+            self.house.food -= 20
         else:
             cprint('{} нет еды'.format(self.name), color='red')
 
@@ -71,7 +71,7 @@ class Man:
             self.house.cat_food += 50
 
     def clean_house(self):
-        if self.house.dirt >= 100:
+        if self.house.dirt >= 50:
             cprint('{} убрался в доме!'.format(self.name), color='magenta')
         self.fullness -= 20
         self.house.dirt -= 100
@@ -80,6 +80,7 @@ class Man:
     def go_to_the_house(self, house):
         self.house = house
         self.fullness -= 10
+        self.buy_cat_food()
         cprint('{} Вьехал в дом'.format(self.name), color='cyan')
 
     def act(self):
@@ -87,13 +88,13 @@ class Man:
             cprint('{} умер...'.format(self.name), color='red')
             return
         dice = randint(1, 6)
-        if self.fullness < 30:
+        if self.fullness <= 20:
             self.eat()
-        elif self.house.food < 20:
-            self.shopping()
         elif self.house.money < 50:
             self.work()
-        elif self.house.cat_food < 10:
+        elif self.house.food <= 20:
+            self.shopping()
+        elif self.house.cat_food <= 50:
             self.buy_cat_food()
         elif self.house.dirt >= 100:
             self.clean_house()
@@ -105,17 +106,7 @@ class Man:
             self.watch_MTV()
 
     def get_cat(self, name_cat, house):
-        Cat(name_cat).house = house  # не понимаю, как внутри этого метода присвоить значение атрибуту внутри
-        # TODO в этом месте Вы вызываете класс Кота. Вот пример Вашего кода, где вызываете и сохраняете класс Кота
-        #  felix = Cat(name='Феликс')
-        #  Дальше подбираете кота
-        #  bivis.get_cat(name_cat=felix, house=my_sweet_home)
-        #  Получается Cat(name_cat).house = house равно Cat(Cat(name='Феликс')).house = house
-        #  name_cat это не имя кота, а Класс кота.
-        #  У класса Кот, есть аргумент house. Давайте попробуем поселить кота так же, как селим человека.
-
-        # в свой дом
-        # инита кота. Сейчас прописано жестко
+        Cat.house = house
         self.fullness -= 10
         cprint('Взяли кота {} в дом'.format(name_cat), color='cyan')
 
@@ -123,7 +114,7 @@ class House:
 
     def __init__(self):
         self.food = 50
-        self.money = 0
+        self.money = 50
         self.cat_food = 0
         self.dirt = 0
         
@@ -140,20 +131,19 @@ class Cat:
     def __init__(self, name):
         self.name = name
         self.fullness = 50
-        self.house = my_sweet_home  # В этом месте должен быть просто None. Коту мы дом потом присвоим =)
+        # self.house = my_sweet_home  # В этом месте должен быть просто None. Коту мы дом потом присвоим =)
 
     def __str__(self):
         return '{} - зе кот! Сытость {}'.format(self.name, self.fullness)
 
     def eat(self):
-        # TODO, Александр, давайте немного поменяем условие. Если кошачьей еды больше или равно тому,
-        #  что может съесть кот определённого кол-ва, то кот есть. В противном случае - скончается.
-        if self.house.cat_food <= 0:
+        if self.house.cat_food >= 10:
+            cprint('Котик {} вкусно кушает и облизывается.'.format(self.name))
+            self.fullness += 20
+            self.house.cat_food -= 10
+        else:
             cprint('Котик {} скончался от недостатка в питании..'.format(self.name), color='red')
             return
-        cprint('Котик {} вкусно кушает и облизывается.'.format(self.name))
-        self.fullness += 20
-        self.house.cat_food -= 10
 
     def sleep(self):
         if self.fullness <= 0:
@@ -170,27 +160,17 @@ class Cat:
         self.house.dirt += 5
         cprint('Котик {} играет с обоями..'.format(self.name), color='grey')
 
-    def do_nothing(self):
-        if self.fullness <= 0:
-            cprint('Котик {} скончался от недостатка в питании..'.format(self.name), color='red')
-            return
-        self.fullness -= 5
-        cprint('Я котик по имени {} и сейчас я не делаю ничего!'.format(self.name), color='cyan')
-
-
     def cat_act(self):
         if self.fullness <= 0:
             cprint('Котик {} скончался от недостатка в питании..'.format(self.name), color='red')
             return
-        decision = randint(1, 3)
-        if self.fullness < 20:
+        if self.fullness < 30:
             self.eat()
+        decision = randint(1, 2)
         if decision == 1:
             self.sleep()
         elif decision == 2:
             self.play()
-        else:
-            self.do_nothing()
 
 
 # Кот может есть, спать и драть обои - необходимо реализовать соответствующие методы.
@@ -205,29 +185,23 @@ bivis = Man(name='Бивис')
 my_sweet_home = House()
 bivis.go_to_the_house(house=my_sweet_home)
 
-# TODO, предлагаю подумать, как добавлять котов в цикле
-felix = Cat(name='Феликс')
-bivis.get_cat(name_cat=felix, house=my_sweet_home)
-edmund = Cat(name='Эдмунд')
-bivis.get_cat(name_cat=edmund, house=my_sweet_home)
-bigglesworth = Cat(name='Бигглсуорт')
-bivis.get_cat(name_cat=bigglesworth, house=my_sweet_home)
-# leopold = Cat(name='Леопольд')
-# bivis.get_cat(name_cat=leopold, house=my_sweet_home)
-# TODO, Александр, пожалуйста, обратите внимание, все в итоге должны выжить =)
+cats = [ Cat(name='Феликс'),
+        Cat(name='Эдмунд'),
+    Cat(name='Бигглсуорт')
+]
+
+for cat in cats:
+    bivis.get_cat(name_cat=cat, house=my_sweet_home)
+
 for day in range(1, 365):
     print('================ день {} =================='.format(day))
     bivis.act()
-    felix.cat_act()
-    edmund.cat_act()
-    bigglesworth.cat_act()
-    # leopold.cat_act()
+    for cat in cats:
+        cat.cat_act()
     print('--- в конце дня ---')
+    for cat in cats:
+        print(cat)
     print(bivis)
-    print(felix, ',',
-          edmund, ',',
-          bigglesworth, ',',)
-          # leopold)
     print(my_sweet_home)
 
 # Усложненное задание (делать по желанию)
