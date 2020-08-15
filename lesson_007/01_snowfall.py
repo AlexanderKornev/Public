@@ -35,11 +35,7 @@ class Snowflake:
         sd.snowflake(center=point, length=self.length)
 
     def can_fall(self):
-        # if self.y > 10:
-        #     return True
-        # else:
-        #     return False
-        return self.y > 10  # Лучше сразу так. Возвращаемые значения при сравнении всегда или True или False
+        return self.y > 10
 
 
 snowflake_list = []
@@ -56,17 +52,11 @@ def get_fallen_flakes():
     for_remove = []
     count = 0
     for i in snowflake_list:
-        # TODO, лучше проверять по методу класса can_fall. Если снежинка не может больше падать, то делаем.
-        #  В таком случае, если мы захотим поменять это значение, надо будет не только в классе менять,
-        #  но и в остальном коде. А так, просто в классе =)
-        if i.y < 10:
+        if i.can_fall() is False:
             count += 1
             for_remove.append(i)
     return count, for_remove
 
-# TODO, Александр, этот метод лишний. Т.к. просто перевызывает get_flakes.
-def append_flakes(count):
-    get_flakes(count=count)
 
 
 def remove(for_remove_list):
@@ -98,11 +88,10 @@ while True:
         flake.move()
         flake.draw()
     fallen_flakes = get_fallen_flakes()  # подчитать сколько снежинок уже упало
-    print(fallen_flakes)
     if fallen_flakes:
         #
-        append_flakes(count=fallen_flakes[0])  # добавить еще сверху
-        remove_flakes = remove(for_remove_list=fallen_flakes[1])  # TODO Лучше без назначения переменной.
+        get_flakes(count=fallen_flakes[0])  # добавить еще сверху
+        remove(for_remove_list=fallen_flakes[1])
     sd.sleep(0.1)
     if sd.user_want_exit():
         break
