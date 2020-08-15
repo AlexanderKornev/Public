@@ -13,7 +13,7 @@ sd.resolution = 1800, 900
 
 class Snowflake:
 
-    def __init__(self, name=None) :
+    def __init__(self, name=None):
         self.name = name
         self.x = sd.random_number(100, 1100)
         self.y = sd.random_number(700, 800)
@@ -58,7 +58,6 @@ def get_fallen_flakes():
     return count, for_remove
 
 
-
 def remove(for_remove_list):
     global snowflake_list
     for i in for_remove_list:
@@ -89,7 +88,6 @@ while True:
         flake.draw()
     fallen_flakes = get_fallen_flakes()  # подчитать сколько снежинок уже упало
     if fallen_flakes:
-        #
         get_flakes(count=fallen_flakes[0])  # добавить еще сверху
         remove(for_remove_list=fallen_flakes[1])
     sd.sleep(0.1)
@@ -97,3 +95,5 @@ while True:
         break
 
 sd.pause()
+
+# зачёт!

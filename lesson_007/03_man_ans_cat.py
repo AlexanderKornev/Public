@@ -4,6 +4,7 @@
 from random import randint
 from termcolor import cprint
 
+
 # Доработать практическую часть урока lesson_007/python_snippets/08_practice.py
 
 # Необходимо создать класс кота. У кота есть аттрибуты - сытость и дом (в котором он живет).
@@ -76,7 +77,6 @@ class Man:
         self.fullness -= 20
         self.house.dirt -= 100
 
-
     def go_to_the_house(self, house):
         self.house = house
         self.fullness -= 10
@@ -105,10 +105,14 @@ class Man:
         else:
             self.watch_MTV()
 
+    # TODO, Нейминг: ошибка в названии переменной. name_cat это "кот", а не имя кота =)
+
     def get_cat(self, name_cat, house):
         Cat.house = house
+        # TODO правильно так "кот".house = house. Cat это класс для создания котов =)
         self.fullness -= 10
         cprint('Взяли кота {} в дом'.format(name_cat), color='cyan')
+
 
 class House:
 
@@ -117,15 +121,14 @@ class House:
         self.money = 50
         self.cat_food = 0
         self.dirt = 0
-        
 
     def __str__(self):
         return 'В доме еды осталось {}, денег осталось {}, кошачьей еды осталось {}, грязно на {}'.format(
             self.food, self.money, self.cat_food, self.dirt
         )
 
-class Cat:
 
+class Cat:
     house = None
 
     def __init__(self, name):
@@ -161,6 +164,8 @@ class Cat:
         cprint('Котик {} играет с обоями..'.format(self.name), color='grey')
 
     def cat_act(self):
+        # TODO В некоторые дни коты делают по 2 действия. Должны делать по одномую.
+        #  Предположу, что связано с разделением блоков if. Давайте сделаем один. if/elif/else =)
         if self.fullness <= 0:
             cprint('Котик {} скончался от недостатка в питании..'.format(self.name), color='red')
             return
@@ -185,10 +190,19 @@ bivis = Man(name='Бивис')
 my_sweet_home = House()
 bivis.go_to_the_house(house=my_sweet_home)
 
-cats = [ Cat(name='Феликс'),
-        Cat(name='Эдмунд'),
+
+# TODO, Александр, предлагаю в Классе Cat, перед init создать список с именами котов. Указать штук 5 - 10 =)
+#  И с помощью random.choice в init выбирать имя кота автоматически =) В таком случае, имя у подобранного кота уже будет
+#  Можно их смело в цикле с range создавать тысячами =)
+
+cats = [
+    Cat(name='Феликс'),
+    Cat(name='Эдмунд'),
     Cat(name='Бигглсуорт')
 ]
+
+
+
 
 for cat in cats:
     bivis.get_cat(name_cat=cat, house=my_sweet_home)
