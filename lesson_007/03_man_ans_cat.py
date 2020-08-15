@@ -129,7 +129,7 @@ class House:
 
 
 class Cat:
-    house = None
+    house = None  # TODO и перенесём дом в init =)
 
     def __init__(self, name):
         self.name = name
