@@ -25,8 +25,6 @@ class Water():
         return 'Вода'
 
     def __add__(self, other):
-        # TODO, Александр, предлагаю объединить наши блоки if в один условный операторы if/elif
-        #  и добавть else. Вернём None, если не одно из условий не сработало. Так во всём коде =)
         if isinstance(other, Wind):
             return Storm()
         elif isinstance(other, Fire):
