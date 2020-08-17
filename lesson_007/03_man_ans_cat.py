@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from random import randint
+from random import randint, choice
 from termcolor import cprint
 
 
@@ -105,13 +105,11 @@ class Man:
         else:
             self.watch_MTV()
 
-    # TODO, Нейминг: ошибка в названии переменной. name_cat это "кот", а не имя кота =)
 
-    def get_cat(self, name_cat, house):
-        Cat.house = house
-        # TODO правильно так "кот".house = house. Cat это класс для создания котов =)
+    def get_cat(self, cat, house):
+        cat.house = house
         self.fullness -= 10
-        cprint('Взяли кота {} в дом'.format(name_cat), color='cyan')
+        cprint('Взяли кота {} в дом'.format(cat.name), color='cyan')
 
 
 class House:
@@ -128,16 +126,17 @@ class House:
         )
 
 
-class Cat:
-    house = None  # TODO и перенесём дом в init =)
 
-    def __init__(self, name):
-        self.name = name
+class Cat:
+    cats_name = ['Феликс', 'Эдмунд', 'Бигглсуорт', 'Сиам', 'Оскар', 'Гарри', 'Байрон', 'Багира', 'Айрис', 'Диана']
+
+    def __init__(self):
+        self.name = choice(Cat.cats_name)
         self.fullness = 50
-        # self.house = my_sweet_home  # В этом месте должен быть просто None. Коту мы дом потом присвоим =)
+        self.house = None
 
     def __str__(self):
-        return '{} - зе кот! Сытость {}'.format(self.name, self.fullness)
+        return 'Котик {}! Сытость {}'.format(self.name, self.fullness)
 
     def eat(self):
         if self.house.cat_food >= 10:
@@ -164,17 +163,16 @@ class Cat:
         cprint('Котик {} играет с обоями..'.format(self.name), color='grey')
 
     def cat_act(self):
-        # TODO В некоторые дни коты делают по 2 действия. Должны делать по одномую.
-        #  Предположу, что связано с разделением блоков if. Давайте сделаем один. if/elif/else =)
+        decision = randint(1, 2)
         if self.fullness <= 0:
             cprint('Котик {} скончался от недостатка в питании..'.format(self.name), color='red')
             return
-        if self.fullness < 30:
+        elif self.fullness < 30:
             self.eat()
-        decision = randint(1, 2)
-        if decision == 1:
+
+        elif decision == 1:
             self.sleep()
-        elif decision == 2:
+        else:
             self.play()
 
 
@@ -190,22 +188,12 @@ bivis = Man(name='Бивис')
 my_sweet_home = House()
 bivis.go_to_the_house(house=my_sweet_home)
 
-
-# TODO, Александр, предлагаю в Классе Cat, перед init создать список с именами котов. Указать штук 5 - 10 =)
-#  И с помощью random.choice в init выбирать имя кота автоматически =) В таком случае, имя у подобранного кота уже будет
-#  Можно их смело в цикле с range создавать тысячами =)
-
-cats = [
-    Cat(name='Феликс'),
-    Cat(name='Эдмунд'),
-    Cat(name='Бигглсуорт')
-]
-
-
-
+cats = []
+for i in range(5):
+    cats += [Cat()]
 
 for cat in cats:
-    bivis.get_cat(name_cat=cat, house=my_sweet_home)
+    bivis.get_cat(cat=cat, house=my_sweet_home)
 
 for day in range(1, 365):
     print('================ день {} =================='.format(day))
